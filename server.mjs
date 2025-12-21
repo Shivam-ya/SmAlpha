@@ -4,64 +4,43 @@ import 'dotenv/config';
 import Groq from 'groq-sdk';
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-// Render auto sets PORT
-const port = process.env.PORT || 10000;
-
-// MUST use env variable
+// Initialize Groq client using the key from your .env file
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY
+    apiKey: "gsk_R2z88ps68BZ1PQtWpPwWd9Yb3FYa9Oy6YCQZjuxzXAG6cuUjt1"
 });
 
-// allow frontend domain
-app.use(cors({
-  origin: "https://shivam-ya.github.io",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-}));
+app.use(cors());          // Allows your frontend to talk to your backend
+app.use(express.json());  // Allows the server to read JSON data
 
-app.use(express.json());
+// Main AI endpoint
+app.post('/chat', async (req, res) => {
+    try {
+        const { message } = req.body;
 
-// render test route
-app.get("/", (req, res) => {
-  res.send("API is online");
-});
+        const chatCompletion = await groq.chat.completions.create({
+            messages: [
+                {
+                    role: "user",
+                    content: message,
+                },
+            ],
+            model: "llama-3.3-70b-versatile", // High-performance Groq model
+        });
 
-// main chat endpoint
-app.post("/chat", async (req, res) => {
-  try {
-    const { message } = req.body;
+        res.json({
+            reply: chatCompletion.choices[0]?.message?.content || ""
+        });
 
-    if (!message) {
-      return res.status(400).json({ error: "message required" });
+    } catch (error) {
+        console.error("Groq API Error:", error);
+        res.status(500).json({ error: "Failed to get response from Groq" });
     }
-
-    const completion = await groq.chat.completions.create({
-      messages: [
-        {
-          role: "system",
-          content: "You are SM ALPHA assistant."
-        },
-        {
-          role: "user",
-          content: message
-        },
-      ],
-      model: "llama-3.3-70b-versatile",
-      temperature: 0.3,
-    });
-
-    const reply = completion.choices?.[0]?.message?.content || "";
-
-    res.json({ reply });
-
-  } catch (error) {
-    console.error("Groq API error:", error);
-    res.status(500).json({ error: "AI failed" });
-  }
 });
 
 app.listen(port, () => {
-  console.log(`🚀 Server running on port ${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
 });
+
 
