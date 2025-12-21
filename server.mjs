@@ -4,26 +4,38 @@ import 'dotenv/config';
 import Groq from 'groq-sdk';
 
 const app = express();
-const groq = new Groq({ apiKey:"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"});
+const port = process.env.PORT || 10000; // Render standard port
 
+const groq = new Groq({ 
+    apiKey: "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" // Must be set in Render dashboard
+});
+
+// Configure CORS to allow only your GitHub Pages origin
 app.use(cors({
-    origin: 'https://shivam-ya.github.io' // Explicitly allow your frontend
+    origin: 'https://shivam-ya.github.io' 
 }));
-app.use(express.json());
 
-app.get('/', (req, res) => res.sendStatus(200));
+app.use(express.json()); 
+
+// Health check endpoint for "Online" status
+app.get('/', (req, res) => res.status(200).send("API is online"));
 
 app.post('/chat', async (req, res) => {
     try {
         const { message } = req.body;
         const completion = await groq.chat.completions.create({
-            messages: [{ role: "system", content: "You are SM ALPHA." }, { role: "user", content: message }],
-            model: "llama-3.3-70b-versatile",
+            messages: [
+                { role: "system", content: "You are SM ALPHA, an AI assistant." },
+                { role: "user", content: message },
+            ],
+            model: "llama-3.3-70b-versatile", // Use high-performance model
         });
+
         res.json({ reply: completion.choices[0]?.message?.content || "" });
-    } catch (e) {
-        res.status(500).json({ error: e.message });
+    } catch (error) {
+        console.error("Groq API Error:", error);
+        res.status(500).json({ error: "Failed to fetch response" });
     }
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(port, () => console.log(`🚀 Server live on port ${port}`));
