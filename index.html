@@ -6,7 +6,6 @@
     <title>SM ALPHA | AI Chat</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
     <style>
         :root {
             --primary-blue: #0062ff;
@@ -20,7 +19,6 @@
             --online: #10b981;
             --offline: #ef4444;
         }
-
         .dark-mode {
             --ai-bg: #2c2c2e;
             --text-dark: #ffffff;
@@ -29,199 +27,88 @@
             --body-bg: #000000;
             --border: #3a3a3c;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
-
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: var(--body-bg);
-            height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            overflow: hidden; 
-        }
-
-        .app-container {
-            width: 95%; 
-            max-width: 1400px; 
-            height: 92vh;
-            background: var(--app-bg);
-            display: flex; flex-direction: column;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            border-radius: 24px;
-            overflow: hidden;
-        }
-
-        header { 
-            padding: 20px 35px;
-            border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: space-between;
-            background: var(--app-bg);
-            z-index: 100;
-        }
-
-        .header-left { display: flex; align-items: center; gap: 20px; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--body-bg); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .app-container { width: 95%; max-width: 1400px; height: 92vh; background: var(--app-bg); display: flex; flex-direction: column; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border-radius: 24px; overflow: hidden; }
+        header { padding: 20px 35px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--app-bg); z-index: 100; }
         .logo { font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); }
-        
         .status-container { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: rgba(0,0,0,0.03); }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--offline); }
-        .status-text { color: var(--text-muted); }
         .is-online .status-dot { background: var(--online); box-shadow: 0 0 8px var(--online); animation: pulse-green 2s infinite; }
         .is-online .status-text { color: var(--online); }
-
-        .theme-toggle {
-            cursor: pointer;
-            background: var(--ai-bg);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-        }
-        .theme-toggle:active { transform: scale(0.9); }
-        .theme-toggle svg { stroke: var(--text-dark); }
-
         @keyframes pulse-green { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-
         #chat-box { flex: 1; overflow-y: auto; padding: 35px; display: flex; flex-direction: column; gap: 25px; }
         .msg-turn { display: flex; width: 100%; gap: 14px; }
         .user-turn { flex-direction: row-reverse; }
         .avatar { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
         .ai-avatar { background: var(--primary-blue); color: white; }
         .user-avatar { background: var(--ai-bg); color: var(--text-dark); }
-
         .content-wrapper { max-width: 85%; display: flex; flex-direction: column; }
         .user-turn .content-wrapper { align-items: flex-end; }
-        .sender-label { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.6px; }
-
+        .sender-label { font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; }
         .bubble { padding: 16px 20px; border-radius: 18px; font-size: 15px; line-height: 1.6; }
         .user-bubble { background: var(--user-bg); color: white; border-top-right-radius: 2px; }
         .ai-bubble { background: var(--ai-bg); color: var(--text-dark); border-top-left-radius: 2px; }
-
-        .ai-bubble h1, .ai-bubble h2, .ai-bubble h3 { margin: 10px 0; color: var(--primary-blue); }
-        .ai-bubble table { border-collapse: collapse; width: 100%; margin: 10px 0; background: var(--app-bg); border-radius: 8px; overflow: hidden; }
-        .ai-bubble th, .ai-bubble td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
-        .ai-bubble th { background: rgba(0,0,0,0.05); font-weight: 700; }
-        .ai-bubble ul, .ai-bubble ol { margin-left: 20px; margin-bottom: 10px; }
-
-        .action-icon { cursor: pointer; color: var(--text-muted); background: none; border: none; padding: 4px; transition: color 0.2s; display: flex; align-items: center; justify-content: center; }
-        .action-icon:hover { color: var(--primary-blue); }
-
         .input-area { padding: 25px 35px; border-top: 1px solid var(--border); background: var(--app-bg); }
         .input-bar { display: flex; background: var(--ai-bg); border-radius: 22px; padding: 6px 12px; align-items: center; gap: 10px; }
         input { flex: 1; border: none; background: transparent; outline: none; font-size: 16px; padding: 10px 0; color: var(--text-dark); }
-        .send-btn { background: var(--primary-blue); color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-
+        .send-btn { background: var(--primary-blue); color: white; border: none; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; }
         .typing { display: flex; gap: 4px; padding: 12px 0; }
         .dot { width: 6px; height: 6px; background: #ccd0d5; border-radius: 50%; animation: blink 1.4s infinite both; }
         @keyframes blink { 0%, 80%, 100% { opacity: 0; } 40% { opacity: 1; } }
     </style>
 </head>
 <body>
-
     <div class="app-container">
         <header>
-            <div class="header-left">
+            <div style="display: flex; align-items: center; gap: 20px;">
                 <div class="logo">SM ALPHA</div>
                 <div id="statusIndicator" class="status-container">
                     <div class="status-dot"></div>
-                    <span id="statusText" class="status-text">Offline</span>
+                    <span id="statusText" class="status-text">Connecting...</span>
                 </div>
             </div>
-            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch Theme">
-                <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
+            <button onclick="document.body.classList.toggle('dark-mode')" style="cursor:pointer; background:none; border:none; font-size:20px;">🌓</button>
         </header>
-
         <div id="chat-box"></div>
-
         <div class="input-area">
             <div class="input-bar">
-                <input type="text" id="userInput" placeholder="Ask SM ALPHA a question..." onkeypress="if(event.key === 'Enter') send()">
+                <input type="text" id="userInput" placeholder="Ask SM ALPHA..." onkeypress="if(event.key === 'Enter') send()">
                 <button class="send-btn" onclick="send()">➤</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Use your real Render URL instead of localhost
-        const API_URL = "https://smalpha.onrender.com";
-
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.getElementById('themeIcon');
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-            } else {
-                icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-            }
-        }
+        // UPDATE THIS TO YOUR ACTUAL RENDER URL
+        const API_BASE_URL = "https://smalpha.onrender.com";
 
         async function checkServerStatus() {
             const indicator = document.getElementById('statusIndicator');
             const text = document.getElementById('statusText');
             try {
-                // Fetch from the root URL to check if online
-                const response = await fetch(`${API_URL}/`);
-                if (response.ok || response.status === 404) {
+                const res = await fetch(API_BASE_URL + '/');
+                if (res.ok) {
                     indicator.classList.add('is-online');
                     text.innerText = "Online";
-                } else {
-                    throw new Error();
                 }
-            } catch (error) {
+            } catch (e) {
                 indicator.classList.remove('is-online');
                 text.innerText = "Offline";
             }
         }
-        
-        // Check every 10 seconds (Render free tier might take 30s to wake up)
         setInterval(checkServerStatus, 10000);
         checkServerStatus();
 
-        const copyToClipboard = (text) => navigator.clipboard.writeText(text);
-
-        async function shareMessage(text) {
-            if (navigator.share) {
-                try { await navigator.share({ title: 'SM ALPHA AI', text: text }); } catch (err) {}
-            } else { copyToClipboard(text); }
-        }
-
-        function downloadMessage(text) {
-            const blob = new Blob([text], { type: 'text/plain' });
-            const anchor = document.createElement('a');
-            anchor.download = "sm_alpha_response.txt";
-            anchor.href = URL.createObjectURL(blob);
-            anchor.click();
-        }
-
         function appendAIReponse(text) {
             const box = document.getElementById('chat-box');
-            const formattedReply = marked.parse(text);
-            // Escape special characters for JS string injection
-            const safeText = text.replace(/`/g, "\\`").replace(/'/g, "\\'");
-
+            const formatted = marked.parse(text);
             box.innerHTML += `
                 <div class="msg-turn">
                     <div class="avatar ai-avatar">SM</div>
                     <div class="content-wrapper">
                         <span class="sender-label">SM ALPHA</span>
-                        <div class="bubble ai-bubble">${formattedReply}</div>
-                        <div style="display:flex; gap:16px; margin-top:10px; padding-left:4px;">
-                            <button class="action-icon" title="Copy" onclick="copyToClipboard(\`${safeText}\`)">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                            </button>
-                            <button class="action-icon" title="Share" onclick="shareMessage(\`${safeText}\`)">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-                            </button>
-                            <button class="action-icon" title="Save" onclick="downloadMessage(\`${safeText}\`)">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                            </button>
-                        </div>
+                        <div class="bubble ai-bubble">${formatted}</div>
                     </div>
                 </div>`;
             box.scrollTop = box.scrollHeight;
@@ -230,46 +117,28 @@
         async function send() {
             const input = document.getElementById('userInput');
             const box = document.getElementById('chat-box');
-            if(!input.value.trim()) return;
+            const msg = input.value.trim();
+            if (!msg) return;
 
-            const text = input.value;
-            const lowerText = text.toLowerCase();
             input.value = '';
-
-            // User message UI
-            box.innerHTML += `<div class="msg-turn user-turn"><div class="avatar user-avatar">U</div><div class="content-wrapper"><span class="sender-label">You</span><div class="bubble user-bubble">${text}</div></div></div>`;
+            box.innerHTML += `<div class="msg-turn user-turn"><div class="avatar user-avatar">U</div><div class="content-wrapper"><span class="sender-label">You</span><div class="bubble user-bubble">${msg}</div></div></div>`;
             
             const typingId = 'typing-' + Date.now();
             box.innerHTML += `<div class="msg-turn" id="${typingId}"><div class="avatar ai-avatar">SM</div><div class="content-wrapper"><span class="sender-label">SM ALPHA</span><div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>`;
             box.scrollTop = box.scrollHeight;
 
-            // IDENTITY CHECK
-            const identityWords = ["who made you", "who manufactured you", "who build you", "who built you", "who created you"];
-            if (identityWords.some(q => lowerText.includes(q))) {
-                setTimeout(() => {
-                    const typingEl = document.getElementById(typingId);
-                    if(typingEl) typingEl.remove();
-                    appendAIReponse("Shivam Yadav");
-                }, 600);
-                return; 
-            }
-
             try {
-                const res = await fetch(`${API_URL}/chat`, { 
-                    method: 'POST', 
-                    headers: {'Content-Type': 'application/json'}, 
-                    body: JSON.stringify({ message: text }) 
+                const res = await fetch(`${API_BASE_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg })
                 });
                 const data = await res.json();
-                
-                const typingEl = document.getElementById(typingId);
-                if(typingEl) typingEl.remove();
-                appendAIReponse(data.reply);
-
+                document.getElementById(typingId).remove();
+                appendAIReponse(data.reply || "No response.");
             } catch (err) {
-                const typingEl = document.getElementById(typingId);
-                if(typingEl) typingEl.remove();
-                appendAIReponse("⚠️ Sorry, I'm having trouble connecting to the server. It might be waking up (Render free tier), please try again in a few seconds.");
+                document.getElementById(typingId).remove();
+                appendAIReponse("Error: Backend is unreachable. Please wait for Render to wake up.");
             }
         }
     </script>
