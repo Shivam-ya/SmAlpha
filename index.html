@@ -365,7 +365,8 @@
 
             // API Call
             try {
-                const res = await fetch("https://smalpha-4.onrender.com" + '/chat', { 
+               const res = await fetch(BACKEND_URL + '/chat', {
+  
                     method: 'POST', 
                     headers: {'Content-Type': 'application/json'}, 
                     body: JSON.stringify({ message: text }) 
