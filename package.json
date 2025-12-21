@@ -1,22 +1,8 @@
 {
-  "name": "ai-bot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.mjs"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "groq-sdk": "^0.37.0",
-    "ngrok": "^5.0.0-beta.2",
-    "nodemon": "^3.1.11"
-  },
-  "keywords": []
+    "groq-sdk": "^0.37.0"
+  }
 }
