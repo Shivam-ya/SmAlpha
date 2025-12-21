@@ -9,7 +9,7 @@ const port = process.env.PORT || 10000;
 
 // Security: Use process.env so your key isn't public on GitHub
 const groq = new Groq({ 
-    apiKey: "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"
+    apiKey: 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
 });
 
 // Configure CORS to allow your GitHub Pages frontend
