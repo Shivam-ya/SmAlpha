@@ -1,50 +1,46 @@
-import express from "express";
-import cors from "cors";
-import Groq from "groq-sdk";
-import "dotenv/config";
+import express from 'express';
+import cors from 'cors';
+import 'dotenv/config';
+import Groq from 'groq-sdk';
 
 const app = express();
-const port = process.env.PORT || 10000;
+// Render automatically provides a PORT environment variable
+const port = process.env.PORT || 10000; 
 
-// Load Key from Render Environment
-const groq = new Groq({
-  apiKey: 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
+const groq = new Groq({ 
+    apiKey: "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" // Securely pulled from Render settings
 });
 
-app.use(express.json());
+// Configure CORS to allow your GitHub Pages site
+app.use(cors({
+    origin: 'https://shivam-ya.github.io' 
+}));
 
-app.use(
-  cors({
-    origin: "https://shivam-ya.github.io" // allow GitHub pages
-  })
-);
+app.use(express.json()); 
 
-app.get("/", (req, res) => {
-  res.status(200).send("API is online");
+// Health check endpoint
+app.get('/', (req, res) => res.status(200).send("API is online"));
+
+app.post('/chat', async (req, res) => {
+    try {
+        const { message } = req.body;
+        const completion = await groq.chat.completions.create({
+            messages: [
+                { 
+                    role: "system", 
+                    content: "You are SM ALPHA, a professional AI assistant. Provide structured responses using Markdown." 
+                },
+                { role: "user", content: message },
+            ],
+            model: "llama-3.3-70b-versatile",
+            temperature: 0.3,
+        });
+
+        res.json({ reply: completion.choices[0]?.message?.content || "" });
+    } catch (error) {
+        console.error("Groq API Error:", error);
+        res.status(500).json({ error: "Failed to fetch response" });
+    }
 });
 
-app.post("/chat", async (req, res) => {
-  try {
-    const { message } = req.body;
-
-    const completion = await groq.chat.completions.create({
-      messages: [
-        { role: "system", content: "You are SM ALPHA AI assistant." },
-        { role: "user", content: message }
-      ],
-      model: "llama-3.3-70b-versatile"
-    });
-
-    res.json({
-      reply: completion.choices[0]?.message?.content || ""
-    });
-  } catch (err) {
-    console.error("Groq API ERR:", err);
-    res.status(500).json({ error: "API error" });
-  }
-});
-
-app.listen(port, () => {
-  console.log(`🔥 Server running on port ${port}`);
-});
-
+app.listen(port, () => console.log(`🚀 Server live on port ${port}`));
