@@ -4,36 +4,33 @@ import 'dotenv/config';
 import Groq from 'groq-sdk';
 
 const app = express();
-// The cloud provider will assign a port automatically via process.env.PORT
-const port = process.env.PORT || 10000;
+// Render requires binding to process.env.PORT or default 10000
+const port = process.env.PORT || 10000; 
 
-// Access the API Key from Environment Variables for security
-const groq = new Groq({ apiKey: "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" });
+// Middleware - MUST be before routes
+app.use(cors()); // Allows frontend to communicate with backend
+app.use(express.json()); // Essential for reading JSON from frontend requests
 
-app.use(cors());
-app.use(express.json());
+const groq = new Groq({ 
+    apiKey: "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" // Ensure this is set in Render Env Variables
+});
 
-// Basic route to check if server is live
+// Health check route for Render monitoring
 app.get('/', (req, res) => res.send('SM ALPHA Server is Online'));
 
 app.post('/chat', async (req, res) => {
     try {
         const { message, history = [] } = req.body;
+        
+        if (!message) {
+            return res.status(400).json({ reply: "No message provided." });
+        }
 
         const chatCompletion = await groq.chat.completions.create({
             messages: [
                 { 
                     role: "system", 
-                    content: `You are SM ALPHA, a premium AI. 
-                    Identity Facts: You were created, built, and manufactured solely by Shivam Yadav.
-                    
-                    Response Structure:
-                    - [DEF] Definition & Composition: Start with H2O chemical formula.
-                    - [SCI] The Science: Include Polarity, Surface Tension, and LOW Viscosity.
-                    - [EX] Examples: Human survival, Agriculture, and Industry.
-                    - [CON] Conclusion: A final punchy summary.
-                    
-                    Fact Check: Water has LOW viscosity. It flows easily.` 
+                    content: "You are SM ALPHA, a premium AI created and built by Shivam Yadav." 
                 },
                 ...history,
                 { role: "user", content: message },
@@ -43,9 +40,12 @@ app.post('/chat', async (req, res) => {
 
         res.json({ reply: chatCompletion.choices[0]?.message?.content || "" });
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Groq API Error:", error);
         res.status(500).json({ reply: "I'm having trouble connecting to my brain. Please try again later!" });
     }
 });
 
-app.listen(port, () => console.log(`SM ALPHA Backend live on port ${port}`));
+// Bind to 0.0.0.0 for Render public access
+app.listen(port, "0.0.0.0", () => {
+    console.log(`SM ALPHA Backend live on port ${port}`);
+});
