@@ -17,7 +17,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 10000;
 
 const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY   // <-- FIX 1
+    apiKey: "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"   // <-- FIX 1
 });
 
 app.get("/", (req, res) => {
