@@ -1,51 +1,54 @@
-import express from 'express';
-import cors from 'cors';
-import 'dotenv/config';
-import Groq from 'groq-sdk';
+import express from "express";
+import cors from "cors";
+import Groq from "groq-sdk";
+import "dotenv/config";
 
 const app = express();
-// Render requires binding to process.env.PORT or default 10000
-const port = process.env.PORT || 10000; 
 
-// Middleware - MUST be before routes
-app.use(cors()); // Allows frontend to communicate with backend
-app.use(express.json()); // Essential for reading JSON from frontend requests
+app.use(cors({
+    origin: "*",
+    methods: ["POST","GET"],
+    allowedHeaders: ["Content-Type"]
+}));
 
-const groq = new Groq({ 
-    apiKey: "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" // Ensure this is set in Render Env Variables
+app.use(express.json());
+
+// required for Render public binding
+const PORT = process.env.PORT || 10000;
+
+const groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY   // <-- FIX 1
 });
 
-// Health check route for Render monitoring
-app.get('/', (req, res) => res.send('SM ALPHA Server is Online'));
+app.get("/", (req, res) => {
+    res.send("SM ALPHA Server is Online");
+});
 
-app.post('/chat', async (req, res) => {
+app.post("/chat", async (req, res) => {
     try {
-        const { message, history = [] } = req.body;
-        
+        const { message } = req.body;
+
         if (!message) {
-            return res.status(400).json({ reply: "No message provided." });
+            return res.status(400).json({ reply: "No message provided" });
         }
 
-        const chatCompletion = await groq.chat.completions.create({
-            messages: [
-                { 
-                    role: "system", 
-                    content: "You are SM ALPHA, a premium AI created and built by Shivam Yadav." 
-                },
-                ...history,
-                { role: "user", content: message },
-            ],
+        const response = await groq.chat.completions.create({
             model: "llama-3.3-70b-versatile",
+            messages: [
+                { role: "system", content: "You are SM ALPHA created by Shivam Yadav" },
+                { role: "user", content: message }
+            ]
         });
 
-        res.json({ reply: chatCompletion.choices[0]?.message?.content || "" });
-    } catch (error) {
-        console.error("Groq API Error:", error);
-        res.status(500).json({ reply: "I'm having trouble connecting to my brain. Please try again later!" });
+        res.json({ reply: response.choices[0].message.content });
+
+    } catch (err) {
+        console.error("Backend error:", err);
+        res.status(500).json({ reply: "Error connecting to Groq API" });
     }
 });
 
-// Bind to 0.0.0.0 for Render public access
-app.listen(port, "0.0.0.0", () => {
-    console.log(`SM ALPHA Backend live on port ${port}`);
+// 0.0.0.0 required for Render
+app.listen(PORT, "0.0.0.0", () => {
+    console.log("Backend running on", PORT);
 });
