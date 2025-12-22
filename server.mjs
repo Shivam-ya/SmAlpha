@@ -39,8 +39,14 @@ app.post("/chat", async (req, res) => {
                 { role: "user", content: message }
             ]
         });
+const botReply = response.choices[0]?.message?.content;
 
-        res.json({ reply: response.choices[0].message.content });
+res.json({
+  reply: botReply && botReply.trim() !== ""
+    ? botReply
+    : "⚠️ I don't have live browser access, but I can explain current major topics."
+});
+
 
     } catch (err) {
         console.error("Backend error:", err);
