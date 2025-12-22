@@ -5,7 +5,7 @@ import Groq from 'groq-sdk';
 
 const app = express();
 // The cloud provider will assign a port automatically via process.env.PORT
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 
 // Access the API Key from Environment Variables for security
 const groq = new Groq({ apiKey: "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" });
