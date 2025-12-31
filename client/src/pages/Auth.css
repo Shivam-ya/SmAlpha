@@ -1,0 +1,34 @@
+.auth-container {
+  display: flex;
+  height: 100vh;
+}
+
+.auth-left {
+  flex: 1;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  padding: 60px;
+}
+
+.auth-right {
+  flex: 1;
+  padding: 60px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+}
+
+.error-text {
+  color: red;
+}
