@@ -1,0 +1,3707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤️</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd6eb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Love popup messages */
+        .love-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+            z-index: 10000;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            max-width: 300px;
+            animation: popupAppear 4s ease-in-out forwards;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes popupAppear {
+            0% { 
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            15% { 
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+            }
+            20% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            85% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 20px;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 16px;
+            animation: sparkle 3s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            position: relative;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            color: #d63384;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .main-message {
+            font-size: 1.4rem;
+            color: #8b5a83;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .welcome-note {
+            font-size: 1.1rem;
+            color: #a0527c;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 192, 203, 0.3);
+            border-radius: 15px;
+            border-left: 4px solid #ff69b4;
+        }
+
+        /* Music toggle */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #ff69b4, #da70d6, #ff1493);
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: visible;
+            animation: musicPulse 2s infinite ease-in-out;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(255, 105, 180, 0.7);
+            animation: musicPulse 1s infinite ease-in-out;
+        }
+
+        .music-toggle:active {
+            transform: scale(1.05);
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { 
+                box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+            }
+            50% { 
+                box-shadow: 0 8px 25px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 105, 180, 0.4);
+            }
+        }
+
+        /* Musical notes and hearts floating around button */
+        .music-toggle::before,
+        .music-toggle::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            top: 0;
+            left: 0;
+            animation: ripple 2s infinite;
+        }
+
+        .music-toggle::after {
+            animation-delay: 1s;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        /* Floating musical elements */
+        .music-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-note {
+            position: absolute;
+            font-size: 16px;
+            color: #ff69b4;
+            opacity: 0;
+            animation: floatUp 3s infinite ease-out;
+        }
+
+        .floating-note:nth-child(1) {
+            left: -20px;
+            top: 10px;
+            animation-delay: 0s;
+        }
+
+        .floating-note:nth-child(2) {
+            right: -20px;
+            top: 20px;
+            animation-delay: 1s;
+        }
+
+        .floating-note:nth-child(3) {
+            left: -15px;
+            bottom: 10px;
+            animation-delay: 2s;
+        }
+
+        .floating-note:nth-child(4) {
+            right: -15px;
+            bottom: 20px;
+            animation-delay: 0.5s;
+        }
+
+        .floating-note:nth-child(5) {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(0px) rotate(0deg);
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-40px) rotate(360deg);
+            }
+        }
+
+        /* Sparkle effects */
+        .music-sparkle {
+            position: absolute;
+            font-size: 12px;
+            color: #ffd700;
+            opacity: 0;
+            animation: sparkleFloat 2.5s infinite ease-in-out;
+        }
+
+        .music-sparkle:nth-child(1) {
+            top: -25px;
+            left: -25px;
+            animation-delay: 0s;
+        }
+
+        .music-sparkle:nth-child(2) {
+            top: -25px;
+            right: -25px;
+            animation-delay: 0.8s;
+        }
+
+        .music-sparkle:nth-child(3) {
+            bottom: -25px;
+            left: -25px;
+            animation-delay: 1.6s;
+        }
+
+        .music-sparkle:nth-child(4) {
+            bottom: -25px;
+            right: -25px;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+
+        /* Enhanced hover effects */
+        .music-toggle:hover .floating-note {
+            animation-duration: 1.5s;
+        }
+
+        .music-toggle:hover .music-sparkle {
+            animation-duration: 1.2s;
+        }
+
+        /* Button grid */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .interactive-button {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            border: none;
+            border-radius: 20px;
+            padding: 25px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .interactive-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.4);
+            background: linear-gradient(135deg, #ff1493, #dc143c);
+        }
+
+        .interactive-button:active {
+            transform: translateY(-2px);
+        }
+
+        .button-icon {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .button-text {
+            flex: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            margin-top: 40px;
+            color: #8b5a83;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+
+        .weather-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .main-message {
+                font-size: 1.2rem;
+            }
+            
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .interactive-button {
+                padding: 20px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Section styles for placeholders */
+        .section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
+            text-align: center;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-button {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #ff1493;
+            transform: translateY(-2px);
+        }
+        
+        /* --- Love Playlist Section --- */
+        .playlist-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+        }
+
+        .current-song {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffeef8, #ffe0f0);
+            border-radius: 15px;
+        }
+
+        .album-art {
+            font-size: 3.5rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border-radius: 15px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .song-details h3 {
+            color: #d63384;
+            margin: 0 0 5px 0;
+            font-size: 1.5rem;
+        }
+
+        .song-details p {
+            color: #8b5a83;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .player-controls button {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #d63384;
+            transition: all 0.3s ease;
+        }
+
+        .player-controls button:hover {
+            transform: scale(1.1);
+            color: #ff1493;
+        }
+
+        #playPauseBtn {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            border-radius: 50%;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .song-list {
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 10px; /* For scrollbar spacing */
+        }
+
+        .song-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            text-align: left;
+        }
+
+        .song-item:hover {
+            background: rgba(255, 192, 203, 0.5);
+            transform: translateX(5px);
+        }
+
+        .song-item.active {
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            color: white;
+            font-weight: bold;
+            border-left: 4px solid #ff1493;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Confetti -->
+    <div class="confetti" id="confetti"></div>
+    
+    <!-- Music toggle -->
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🎵
+        <div class="music-elements">
+            <div class="floating-note">♪</div>
+            <div class="floating-note">♫</div>
+            <div class="floating-note">♪</div>
+            <div class="floating-note">♫</div>
+            <div class="floating-note">♪</div>
+        </div>
+        <div class="music-sparkle">✨</div>
+        <div class="music-sparkle">⭐</div>
+        <div class="music-sparkle">✨</div>
+        <div class="music-sparkle">⭐</div>
+    </button>
+    
+    <!-- Main content -->
+    <div class="container">
+        <div id="mainPage">
+            <div class="header">
+                <div class="sparkle" style="top: 10px; left: 20px;">✨</div>
+                <div class="sparkle" style="top: 30px; right: 30px;">⭐</div>
+                <div class="sparkle" style="bottom: 20px; left: 50px;">✨</div>
+                <div class="sparkle" style="bottom: 40px; right: 20px;">⭐</div>
+                
+                <h1 class="title">Happy Birthday Mayuri ❤️</h1>
+                <p class="main-message">
+                    October 1st, 2005 - The day our beautiful Mayuri was born 👑<br>
+                    Celebrating 20 years of pure magic and wonder ✨
+                </p>
+                <div class="welcome-note">
+                    Welcome to your special birthday surprise, Mayuri! 🎉 Click on any section below to explore the magical world I've created just for you, my love!
+                </div>
+            </div>
+            
+            <div class="button-grid">
+                <button class="interactive-button" onclick="showSection('birthdayCard')">
+                    <span class="button-icon">🎂</span>
+                    <span class="button-text">Birthday Card</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('loveCounter')">
+                    <span class="button-icon">💕</span>
+                    <span class="button-text">Love Counter</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('loveGame')">
+                    <span class="button-icon">🎮</span>
+                    <span class="button-text">Love Game</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('ourJourney')">
+                    <span class="button-icon">🌟</span>
+                    <span class="button-text">Our Journey</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('birthdayWishes')">
+                    <span class="button-icon">🌸</span>
+                    <span class="button-text">Birthday Wishes</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('midnightSpecial')">
+                    <span class="button-icon">🌙</span>
+                    <span class="button-text">Midnight Special</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('specialGame')">
+                    <span class="button-icon">🎯</span>
+                    <span class="button-text">Special Game</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('finalSurprise')">
+                    <span class="button-icon">🎁</span>
+                    <span class="button-text">Final Surprise</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('secretMessages')">
+                    <span class="button-icon">💌</span>
+                    <span class="button-text">Secret Messages</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('loveFortune')">
+                    <span class="button-icon">🔮</span>
+                    <span class="button-text">Love Fortune</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('loveLetters')">
+                    <span class="button-icon">💝</span>
+                    <span class="button-text">Love Letters</span>
+                </button>
+                
+                <button class="interactive-button" onclick="showSection('loveComic')">
+                    <span class="button-icon">📚</span>
+                    <span class="button-text">Our Love Comic</span>
+                </button>
+
+                <button class="interactive-button" onclick="showSection('lovePlaylist')">
+                    <span class="button-icon">🎶</span>
+                    <span class="button-text">Love Playlist</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Section placeholders -->
+        <div id="birthdayCard" class="section">
+            <div class="card-container">
+                <div class="birthday-card" id="birthdayCardElement">
+                    <div class="card-front">
+                        <div class="card-sparkles">✨💖✨</div>
+                        <h2>🎂 Happy Birthday! 🎂</h2>
+                        <p>Click to open your special card</p>
+                        <div class="card-sparkles">✨💖✨</div>
+                    </div>
+                    <div class="card-inside">
+                        <div class="card-message">
+                            <h3>Happy Birthday, Mayuri!</h3>
+                            <p>Today, the world was gifted with the most precious soul - you, my beautiful Mayuri. You light up every moment we share, and I feel endlessly lucky to call you mine. Here's to your happiness, dreams, and all the magic ahead. I love you more than words can ever capture.</p>
+                            <div class="signature">Forever yours, with all my love 💖</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-confetti" id="cardConfetti"></div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .card-container {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 400px;
+                    margin: 20px 0;
+                }
+                
+                .birthday-card {
+                    width: 350px;
+                    height: 250px;
+                    position: relative;
+                    cursor: pointer;
+                    transform-style: preserve-3d;
+                    transition: transform 0.8s;
+                }
+                
+                .birthday-card.opened {
+                    transform: rotateY(180deg);
+                }
+                
+                .card-front, .card-inside {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    backface-visibility: hidden;
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 30px;
+                    box-sizing: border-box;
+                    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+                }
+                
+                .card-front {
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    color: white;
+                    text-align: center;
+                }
+                
+                .card-inside {
+                    background: linear-gradient(135deg, #ffeef8, #ffe0f0);
+                    color: #8b5a83;
+                    transform: rotateY(180deg);
+                    text-align: center;
+                }
+                
+                .card-sparkles {
+                    font-size: 1.5rem;
+                    animation: sparkleRotate 2s infinite;
+                }
+                
+                @keyframes sparkleRotate {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(10deg); }
+                }
+                
+                .card-message h3 {
+                    color: #d63384;
+                    margin-bottom: 20px;
+                    font-size: 1.5rem;
+                }
+                
+                .card-message p {
+                    line-height: 1.6;
+                    margin-bottom: 20px;
+                    font-size: 0.95rem;
+                }
+                
+                .signature {
+                    font-style: italic;
+                    font-weight: bold;
+                    color: #ff1493;
+                    font-size: 1.1rem;
+                }
+                
+                .card-confetti {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                }
+                
+                .confetti-burst {
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    animation: confettiBurst 2s ease-out forwards;
+                }
+                
+                @keyframes confettiBurst {
+                    0% {
+                        transform: translate(0, 0) scale(1);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translate(var(--x), var(--y)) scale(0);
+                        opacity: 0;
+                    }
+                }
+            </style>
+            
+            <script>
+                document.getElementById('birthdayCardElement').addEventListener('click', function() {
+                    this.classList.toggle('opened');
+                    if (this.classList.contains('opened')) {
+                        createCardConfetti();
+                    }
+                });
+                
+                function createCardConfetti() {
+                    const container = document.getElementById('cardConfetti');
+                    const colors = ['#ff69b4', '#ffd700', '#ff1493', '#da70d6', '#ff6347'];
+                    
+                    for (let i = 0; i < 30; i++) {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti-burst';
+                        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.left = '50%';
+                        confetti.style.top = '50%';
+                        confetti.style.setProperty('--x', (Math.random() - 0.5) * 400 + 'px');
+                        confetti.style.setProperty('--y', (Math.random() - 0.5) * 400 + 'px');
+                        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                        
+                        container.appendChild(confetti);
+                        
+                        setTimeout(() => confetti.remove(), 2500);
+                    }
+                }
+            </script>
+        </div>
+        
+        <div id="loveCounter" class="section">
+            <h2>💕 Love Counter</h2>
+            <div class="counter-container">
+                <div class="counter-message">
+                    <p>We've been in love for...</p>
+                </div>
+                <div class="counter-display">
+                    <div class="counter-item">
+                        <span class="counter-number" id="dayCounter">0</span>
+                        <span class="counter-label">Days</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="hourCounter">0</span>
+                        <span class="counter-label">Hours</span>
+                    </div>
+                    <div class="counter-item">
+                        <span class="counter-number" id="minuteCounter">0</span>
+                        <span class="counter-label">Minutes</span>
+                    </div>
+                </div>
+                <div class="counter-summary">
+                    <p id="summaryText">That's amazing months and beautiful years together! 💞</p>
+                </div>
+                <div class="love-hearts">
+                    <span class="floating-heart">💖</span>
+                    <span class="floating-heart">💕</span>
+                    <span class="floating-heart">💗</span>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .counter-container {
+                    text-align: center;
+                    padding: 30px;
+                    background: rgba(255, 255, 255, 0.9);
+                    border-radius: 20px;
+                    margin: 20px 0;
+                    position: relative;
+                }
+                
+                .counter-message {
+                    font-size: 1.3rem;
+                    color: #8b5a83;
+                    margin-bottom: 30px;
+                }
+                
+                .counter-display {
+                    display: flex;
+                    justify-content: center;
+                    gap: 30px;
+                    margin: 30px 0;
+                    flex-wrap: wrap;
+                }
+                
+                .counter-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    padding: 20px;
+                    border-radius: 15px;
+                    color: white;
+                    min-width: 100px;
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+                }
+                
+                .counter-number {
+                    font-size: 2.5rem;
+                    font-weight: bold;
+                    animation: pulse 2s infinite;
+                }
+                
+                .counter-label {
+                    font-size: 1rem;
+                    margin-top: 5px;
+                    opacity: 0.9;
+                }
+                
+                .counter-summary {
+                    font-size: 1.2rem;
+                    color: #d63384;
+                    margin-top: 30px;
+                    font-style: italic;
+                }
+                
+                .love-hearts {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                }
+                
+                .floating-heart {
+                    position: absolute;
+                    font-size: 1.5rem;
+                    animation: floatHeart 4s infinite ease-in-out;
+                    opacity: 0.7;
+                }
+                
+                .floating-heart:nth-child(1) {
+                    top: 20%;
+                    left: 10%;
+                    animation-delay: 0s;
+                }
+                
+                .floating-heart:nth-child(2) {
+                    top: 60%;
+                    right: 15%;
+                    animation-delay: 1.5s;
+                }
+                
+                .floating-heart:nth-child(3) {
+                    bottom: 20%;
+                    left: 20%;
+                    animation-delay: 3s;
+                }
+                
+                @keyframes floatHeart {
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    50% { transform: translateY(-20px) rotate(10deg); }
+                }
+                
+                @media (max-width: 768px) {
+                    .counter-display {
+                        gap: 15px;
+                    }
+                    
+                    .counter-item {
+                        min-width: 80px;
+                        padding: 15px;
+                    }
+                    
+                    .counter-number {
+                        font-size: 2rem;
+                    }
+                }
+            </style>
+            
+            <script>
+                function updateLoveCounter() {
+                    // Set your relationship start date here (Year, Month-1, Day)
+                    const startDate = new Date(2023, 0, 1); // January 1, 2023 - adjust this!
+                    const now = new Date();
+                    
+                    const timeDiff = now - startDate;
+                    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                    
+                    document.getElementById('dayCounter').textContent = days;
+                    document.getElementById('hourCounter').textContent = hours;
+                    document.getElementById('minuteCounter').textContent = minutes;
+                    
+                    const months = Math.floor(days / 30);
+                    const years = Math.floor(days / 365);
+                    
+                    document.getElementById('summaryText').textContent = 
+                        `That's ${months} amazing months and ${years} beautiful years together! 💞`;
+                }
+                
+                // Update immediately and then every minute
+                updateLoveCounter();
+                setInterval(updateLoveCounter, 60000);
+            </script>
+        </div>
+        
+        <div id="loveGame" class="section">
+            <h2>🎮 Love Game</h2>
+            <div class="game-container">
+                <div class="quiz-section">
+                    <h3>How Well Do You Know Me? 💕</h3>
+                    <div class="quiz-question" id="quizQuestion">
+                        <p>What's my favorite color?</p>
+                        <div class="quiz-options">
+                            <button class="quiz-option" onclick="selectAnswer(this, true)">Pink 💖</button>
+                            <button class="quiz-option" onclick="selectAnswer(this, false)">Blue 💙</button>
+                            <button class="quiz-option" onclick="selectAnswer(this, false)">Purple 💜</button>
+                        </div>
+                    </div>
+                    <div class="quiz-score">Score: <span id="quizScore">0</span>/10 💕</div>
+                </div>
+                
+                <div class="spin-wheel-section">
+                    <h3>Love Wheel of Fun! 🎡</h3>
+                    <div class="wheel-container">
+                        <div class="wheel" id="loveWheel">
+                            <div class="wheel-section">💋<br>Kiss</div>
+                            <div class="wheel-section">🤗<br>Hug</div>
+                            <div class="wheel-section">💌<br>Love Note</div>
+                            <div class="wheel-section">🎵<br>Song</div>
+                            <div class="wheel-section">📸<br>Selfie</div>
+                            <div class="wheel-section">🌹<br>Compliment</div>
+                        </div>
+                        <button class="spin-button" onclick="spinWheel()">SPIN! 💫</button>
+                    </div>
+                    <div class="wheel-result" id="wheelResult"></div>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .game-container {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 30px;
+                    margin: 20px 0;
+                }
+                
+                .quiz-section, .spin-wheel-section {
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 25px;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+                }
+                
+                .quiz-options {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin: 20px 0;
+                }
+                
+                .quiz-option {
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    color: white;
+                    border: none;
+                    padding: 12px 20px;
+                    border-radius: 25px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                
+                .quiz-option:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+                }
+                
+                .quiz-option.correct {
+                    background: linear-gradient(135deg, #28a745, #20c997);
+                }
+                
+                .quiz-option.incorrect {
+                    background: linear-gradient(135deg, #dc3545, #fd7e14);
+                }
+                
+                .wheel-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 20px;
+                }
+                
+                .wheel {
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    border: 5px solid #ff69b4;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: conic-gradient(
+                        #ff69b4 0deg 60deg,
+                        #ff1493 60deg 120deg,
+                        #da70d6 120deg 180deg,
+                        #ff6347 180deg 240deg,
+                        #ffd700 240deg 300deg,
+                        #ff69b4 300deg 360deg
+                    );
+                    transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
+                }
+                
+                .wheel-section {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.8rem;
+                    font-weight: bold;
+                    color: white;
+                    text-align: center;
+                    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+                }
+                
+                .spin-button {
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    color: white;
+                    border: none;
+                    padding: 15px 30px;
+                    border-radius: 25px;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                
+                .spin-button:hover {
+                    transform: scale(1.05);
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+                }
+                
+                .wheel-result {
+                    margin-top: 20px;
+                    padding: 15px;
+                    background: rgba(255, 105, 180, 0.1);
+                    border-radius: 10px;
+                    font-weight: bold;
+                    color: #d63384;
+                    min-height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                @media (max-width: 768px) {
+                    .game-container {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
+            
+            <script>
+                let currentQuizScore = 0;
+                let currentQuizQuestion = 0;
+                
+                const quizQuestions = [
+                    { question: "What's my favorite color?", options: ["Pink 💖", "Blue 💙", "Purple 💜"], correct: 0 },
+                    { question: "What makes me happiest?", options: ["Your smile 😊", "Pizza 🍕", "Movies 🎬"], correct: 0 },
+                    { question: "My dream date would be?", options: ["Beach sunset 🌅", "Fancy restaurant 🍽️", "Home cuddles 🏠"], correct: 2 }
+                ];
+                
+                function selectAnswer(button, isCorrect) {
+                    const options = document.querySelectorAll('.quiz-option');
+                    options.forEach(opt => opt.disabled = true);
+                    
+                    if (isCorrect) {
+                        button.classList.add('correct');
+                        currentQuizScore++;
+                    } else {
+                        button.classList.add('incorrect');
+                    }
+                    
+                    document.getElementById('quizScore').textContent = currentQuizScore;
+                    
+                    setTimeout(() => {
+                        currentQuizQuestion++;
+                        if (currentQuizQuestion < quizQuestions.length) {
+                            loadNextQuestion();
+                        } else {
+                            showQuizResult();
+                        }
+                    }, 1500);
+                }
+                
+                function loadNextQuestion() {
+                    const question = quizQuestions[currentQuizQuestion];
+                    document.getElementById('quizQuestion').innerHTML = `
+                        <p>${question.question}</p>
+                        <div class="quiz-options">
+                            ${question.options.map((option, index) => 
+                                `<button class="quiz-option" onclick="selectAnswer(this, ${index === question.correct})">${option}</button>`
+                            ).join('')}
+                        </div>
+                    `;
+                }
+                
+                function showQuizResult() {
+                    const percentage = Math.round((currentQuizScore / quizQuestions.length) * 100);
+                    document.getElementById('quizQuestion').innerHTML = `
+                        <div style="text-align: center; padding: 20px;">
+                            <h4>Quiz Complete! 🎉</h4>
+                            <p>You scored ${percentage}%!</p>
+                            <p>${percentage > 70 ? "You know me so well! 💕" : "We need more quality time together! 😘"}</p>
+                        </div>
+                    `;
+                }
+                
+                function spinWheel() {
+                    const wheel = document.getElementById('loveWheel');
+                    const resultDiv = document.getElementById('wheelResult');
+                    
+                    const spins = Math.floor(Math.random() * 5) + 5; // 5-10 spins
+                    const finalRotation = spins * 360 + Math.floor(Math.random() * 360);
+                    
+                    wheel.style.transform = `rotate(${finalRotation}deg)`;
+                    
+                    const results = [
+                        "💋 Give me a sweet kiss right now!",
+                        "🤗 Time for the biggest hug ever!",
+                        "💌 Write me a cute love note!",
+                        "🎵 Sing our favorite song together!",
+                        "📸 Take a silly selfie with me!",
+                        "🌹 Tell me what you love about me!"
+                    ];
+                    
+                    setTimeout(() => {
+                        const resultIndex = Math.floor(Math.random() * results.length);
+                        resultDiv.innerHTML = results[resultIndex];
+                        resultDiv.style.animation = 'fadeIn 0.5s ease-in';
+                    }, 3000);
+                }
+            </script>
+        </div>
+        
+        <div id="ourJourney" class="section">
+            <h2>🌟 Our Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Day 1</div>
+                        <div class="timeline-content">
+                            <h4>💕 First Hello</h4>
+                            <p>The moment our hearts first connected</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Month 1</div>
+                        <div class="timeline-content">
+                            <h4>🌙 First Date</h4>
+                            <p>Under the stars, everything felt perfect</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Month 6</div>
+                        <div class="timeline-content">
+                            <h4>✈️ First Adventure</h4>
+                            <p>Our first trip together - unforgettable memories</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Year 1</div>
+                        <div class="timeline-content">
+                            <h4>💖 Forever Promise</h4>
+                            <p>When we knew this was forever</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .timeline-container {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+                
+                .timeline {
+                    position: relative;
+                    padding-left: 30px;
+                }
+                
+                .timeline::before {
+                    content: '';
+                    position: absolute;
+                    left: 15px;
+                    top: 0;
+                    bottom: 0;
+                    width: 3px;
+                    background: linear-gradient(to bottom, #ff69b4, #ff1493);
+                    border-radius: 2px;
+                }
+                
+                .timeline-item {
+                    position: relative;
+                    margin-bottom: 40px;
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 20px;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+                    animation: slideIn 0.6s ease-out forwards;
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+                
+                .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+                .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+                .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+                .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+                
+                @keyframes slideIn {
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                
+                .timeline-item::before {
+                    content: '';
+                    position: absolute;
+                    left: -37px;
+                    top: 25px;
+                    width: 12px;
+                    height: 12px;
+                    background: #ff69b4;
+                    border-radius: 50%;
+                    border: 3px solid white;
+                    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+                }
+                
+                .timeline-date {
+                    color: #ff1493;
+                    font-weight: bold;
+                    font-size: 0.9rem;
+                    margin-bottom: 10px;
+                }
+                
+                .timeline-content h4 {
+                    color: #d63384;
+                    margin-bottom: 10px;
+                    font-size: 1.2rem;
+                }
+                
+                .timeline-content p {
+                    color: #8b5a83;
+                    line-height: 1.5;
+                }
+            </style>
+        </div>
+        
+        <div id="birthdayWishes" class="section">
+            <h2>🌸 Birthday Wishes</h2>
+            <div class="wishes-container">
+                <div class="wish-card">
+                    <div class="wish-icon">🎂</div>
+                    <h4>May Your Dreams Come True</h4>
+                    <p>Every candle on your cake represents a wish I have for your happiness and success!</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">🌟</div>
+                    <h4>Shine Bright Always</h4>
+                    <p>You light up every room you enter. May your inner light continue to shine forever!</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">💖</div>
+                    <h4>Love Beyond Measure</h4>
+                    <p>May our love grow stronger with each passing day, creating beautiful memories together!</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">🦋</div>
+                    <h4>Adventures Await</h4>
+                    <p>Here's to new adventures, exciting journeys, and wonderful surprises in the year ahead!</p>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .wishes-container {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 20px;
+                    margin: 20px 0;
+                }
+                
+                .wish-card {
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 25px;
+                    border-radius: 15px;
+                    text-align: center;
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+                    transition: transform 0.3s ease;
+                    animation: wishFloat 0.6s ease-out forwards;
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                
+                .wish-card:nth-child(1) { animation-delay: 0.1s; }
+                .wish-card:nth-child(2) { animation-delay: 0.2s; }
+                .wish-card:nth-child(3) { animation-delay: 0.3s; }
+                .wish-card:nth-child(4) { animation-delay: 0.4s; }
+                
+                @keyframes wishFloat {
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .wish-card:hover {
+                    transform: translateY(-5px);
+                }
+                
+                .wish-icon {
+                    font-size: 3rem;
+                    margin-bottom: 15px;
+                    animation: bounce 2s infinite;
+                }
+                
+                .wish-card h4 {
+                    color: #d63384;
+                    margin-bottom: 15px;
+                    font-size: 1.3rem;
+                }
+                
+                .wish-card p {
+                    color: #8b5a83;
+                    line-height: 1.6;
+                }
+            </style>
+        </div>
+        
+        <div id="midnightSpecial" class="section">
+            <h2>🌙 Midnight Special</h2>
+            <div class="midnight-container">
+                <div class="candles-container">
+                    <div class="candle">
+                        <div class="flame">🕯️</div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame">🕯️</div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame">🕯️</div>
+                    </div>
+                </div>
+                
+                <div class="clock-container">
+                    <div class="digital-clock" id="digitalClock">00:00:00</div>
+                    <div class="countdown-info" id="countdownInfo">
+                        <p class="countdown-title">⏰ Midnight Magic Countdown ⏰</p>
+                        <div class="countdown-display">
+                            <div class="countdown-unit">
+                                <span class="countdown-number" id="hoursLeft">00</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-number" id="minutesLeft">00</span>
+                                <span class="countdown-label">Minutes</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-unit">
+                                <span class="countdown-number" id="secondsLeft">00</span>
+                                <span class="countdown-label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="midnight-message" id="midnightMessage">
+                    <div class="stars-row">✨⭐✨⭐✨</div>
+                    <h3>🌙 Waiting for Midnight Magic 🌙</h3>
+                    <p>When the clock strikes 12:00 AM, magical confetti will fall and a special birthday message will appear just for you, Mayuri! 💫</p>
+                    <div class="stars-row">✨⭐✨⭐✨</div>
+                </div>
+                
+                <div class="special-message" id="specialMessage" style="display: none;">
+                    <div class="message-timer" id="messageTimer">⏱️ Magic ends in: 10:00</div>
+                    <div class="stars-row">✨⭐✨⭐✨</div>
+                    <h3 id="specialTitle">🎂 Happy Midnight Birthday, Mayuri! 🎂</h3>
+                    <div class="birthday-note">
+                        <p>🌙 As the clock strikes midnight on your special day, know that you are loved beyond measure! 💖</p>
+                        <p>This magical moment marks another year of your beautiful existence, and I'm so grateful to celebrate it with you!</p>
+                        <p>May this new year bring you endless joy, love, and all your heart's desires! ✨</p>
+                        <div class="voice-message-note">
+                            🎵 <em>Imagine me singing "Happy Birthday" to you right now! 🎶</em>
+                        </div>
+                    </div>
+                    <div class="stars-row">✨⭐✨⭐✨</div>
+                </div>
+                
+                <div class="midnight-confetti" id="midnightConfetti"></div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .midnight-container {
+                    text-align: center;
+                    padding: 30px;
+                    position: relative;
+                }
+                
+                .candles-container {
+                    display: flex;
+                    justify-content: center;
+                    gap: 30px;
+                    margin-bottom: 30px;
+                }
+                
+                .candle {
+                    position: relative;
+                }
+                
+                .flame {
+                    font-size: 2.5rem;
+                    animation: candleFlicker 2s infinite ease-in-out;
+                    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+                }
+                
+                @keyframes candleFlicker {
+                    0%, 100% { 
+                        transform: scale(1) rotate(-2deg);
+                        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+                    }
+                    25% { 
+                        transform: scale(1.1) rotate(1deg);
+                        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 1));
+                    }
+                    50% { 
+                        transform: scale(0.95) rotate(-1deg);
+                        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+                    }
+                    75% { 
+                        transform: scale(1.05) rotate(2deg);
+                        filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
+                    }
+                }
+                
+                .clock-container {
+                    margin-bottom: 40px;
+                }
+                
+                .digital-clock {
+                    font-size: 3rem;
+                    font-weight: bold;
+                    color: #ff1493;
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 20px 40px;
+                    border-radius: 20px;
+                    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+                    margin-bottom: 20px;
+                    font-family: 'Georgia', serif;
+                    animation: clockGlow 3s infinite alternate;
+                    border: 2px solid rgba(255, 182, 193, 0.4);
+                }
+                
+                @keyframes clockGlow {
+                    from { 
+                        box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+                        transform: scale(1);
+                    }
+                    to { 
+                        box-shadow: 0 12px 35px rgba(255, 105, 180, 0.6);
+                        transform: scale(1.02);
+                    }
+                }
+                
+                .countdown-title {
+                    font-size: 1.3rem;
+                    color: #d63384;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                    font-family: 'Georgia', serif;
+                }
+                
+                .countdown-info {
+                    font-size: 1.2rem;
+                    color: #8b5a83;
+                    font-weight: bold;
+                }
+                
+                .countdown-display {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 15px;
+                    margin-top: 20px;
+                    background: rgba(255, 255, 255, 0.95);
+                    padding: 25px;
+                    border-radius: 20px;
+                    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+                    border: 2px solid rgba(255, 182, 193, 0.4);
+                }
+                
+                .countdown-unit {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ff1493);
+                    padding: 18px 22px;
+                    border-radius: 15px;
+                    color: white;
+                    min-width: 85px;
+                    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                }
+                
+                .countdown-number {
+                    font-size: 2.2rem;
+                    font-weight: bold;
+                    font-family: 'Georgia', serif;
+                    animation: gentlePulse 2s infinite ease-in-out;
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+                }
+                
+                .countdown-label {
+                    font-size: 0.85rem;
+                    margin-top: 8px;
+                    opacity: 0.95;
+                    font-weight: 600;
+                }
+                
+                .countdown-separator {
+                    font-size: 2.2rem;
+                    font-weight: bold;
+                    color: #ff1493;
+                    animation: gentleBlink 2s infinite;
+                    font-family: 'Georgia', serif;
+                }
+                
+                @keyframes gentlePulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.03); }
+                }
+                
+                @keyframes gentleBlink {
+                    0%, 70% { opacity: 1; }
+                    71%, 100% { opacity: 0.4; }
+                }
+                
+                .midnight-message, .special-message {
+                    background: linear-gradient(135deg, #ffeef8, #ffe0f0, #ffd6eb);
+                    color: #8b5a83;
+                    padding: 35px;
+                    border-radius: 25px;
+                    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.3);
+                    position: relative;
+                    overflow: hidden;
+                    border: 2px solid rgba(255, 182, 193, 0.4);
+                    margin-top: 30px;
+                }
+                
+                .special-message {
+                    background: linear-gradient(135deg, #fff0f5, #ffe4e1, #ffc0cb);
+                    animation: magicGlow 4s infinite alternate ease-in-out;
+                }
+                
+                @keyframes magicGlow {
+                    from { 
+                        box-shadow: 0 12px 35px rgba(255, 105, 180, 0.3);
+                        transform: scale(1);
+                    }
+                    to { 
+                        box-shadow: 0 16px 45px rgba(255, 105, 180, 0.5);
+                        transform: scale(1.01);
+                    }
+                }
+                
+                .message-timer {
+                    position: absolute;
+                    top: 15px;
+                    right: 20px;
+                    background: rgba(255, 105, 180, 0.2);
+                    padding: 10px 18px;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    font-weight: bold;
+                    color: #d63384;
+                    border: 1px solid rgba(255, 105, 180, 0.3);
+                }
+                
+                .stars-row {
+                    font-size: 1.8rem;
+                    margin: 20px 0;
+                    animation: gentleTwinkle 3s infinite ease-in-out;
+                }
+                
+                @keyframes gentleTwinkle {
+                    0%, 100% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.7; transform: scale(1.05); }
+                }
+                
+                .midnight-message h3, .special-message h3 {
+                    color: #d63384;
+                    margin: 25px 0;
+                    font-size: 2rem;
+                    font-family: 'Georgia', serif;
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+                
+                .midnight-message p, .special-message p {
+                    line-height: 1.8;
+                    font-size: 1.15rem;
+                    position: relative;
+                    z-index: 1;
+                    margin-bottom: 15px;
+                }
+                
+                .birthday-note {
+                    background: rgba(255, 255, 255, 0.6);
+                    padding: 25px;
+                    border-radius: 20px;
+                    margin: 20px 0;
+                    border: 2px solid rgba(255, 182, 193, 0.3);
+                }
+                
+                .voice-message-note {
+                    background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+                    color: white;
+                    padding: 15px 20px;
+                    border-radius: 15px;
+                    margin-top: 20px;
+                    font-style: italic;
+                    text-align: center;
+                    animation: gentlePulse 3s infinite ease-in-out;
+                }
+                
+                .midnight-confetti {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                    z-index: 1000;
+                }
+                
+                .confetti-piece-midnight {
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    animation: confettiFall 4s linear infinite;
+                }
+                
+                @keyframes confettiFall {
+                    0% { 
+                        transform: translateY(-100vh) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% { 
+                        transform: translateY(100vh) rotate(720deg);
+                        opacity: 0;
+                    }
+                }
+                
+                .special-message {
+                    animation: magicAppear 1.2s ease-out;
+                }
+                
+                @keyframes magicAppear {
+                    0% { 
+                        opacity: 0; 
+                        transform: scale(0.8) translateY(30px);
+                    }
+                    100% { 
+                        opacity: 1; 
+                        transform: scale(1) translateY(0);
+                    }
+                }
+            </style>
+            
+            <script>
+                let midnightTimer = null;
+                let messageEndTimer = null;
+                
+                const midnightMessages = [
+                    {
+                        title: "🌙 Day 1 - Midnight Magic 🌙",
+                        text: "At the stroke of midnight, when your birthday officially begins, know that you are the first thing on my mind and the last thing in my heart. You make every moment magical, my love. 💫"
+                    },
+                    {
+                        title: "🌟 Day 2 - Starlit Dreams 🌟",
+                        text: "Another midnight, another chance to tell you how much you mean to me. Under these same stars, I promise to love you more with each passing day. Sweet dreams, my angel. ✨"
+                    },
+                    {
+                        title: "💫 Day 3 - Moonbeam Wishes 💫",
+                        text: "The moon whispers your name tonight, and my heart echoes with love. In these quiet midnight moments, I'm reminded of how blessed I am to have you in my life. 🌙"
+                    },
+                    {
+                        title: "🌙 Day 4 - Midnight Serenade 🌙",
+                        text: "If I could sing you a midnight lullaby, it would be filled with all the love words cannot express. You are my peace, my joy, my everything. Sleep well, beautiful. 🎵"
+                    },
+                    {
+                        title: "✨ Day 5 - Cosmic Love ✨",
+                        text: "In this vast universe, across all the stars and galaxies, there's nothing more precious than this moment - you and me, connected by love that transcends time itself. 🌌"
+                    },
+                    {
+                        title: "🌟 Day 6 - Midnight Promise 🌟",
+                        text: "Every midnight is a new beginning, a fresh start to love you even more. I promise to cherish every sunrise and sunset we share together. You are my forever. 💖"
+                    },
+                    {
+                        title: "🌙 Day 7 - Weekly Wonder 🌙",
+                        text: "A week of midnights, a week of loving you more deeply. Time may pass, but my devotion only grows stronger. You are the constant star in my ever-changing sky. 🌟"
+                    }
+                ];
+                
+                function updateClock() {
+                    const now = new Date();
+                    const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+                    document.getElementById('digitalClock').textContent = timeString;
+                    
+                    // Calculate time to next midnight
+                    const tomorrow = new Date(now);
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    tomorrow.setHours(0, 0, 0, 0);
+                    
+                    const timeToMidnight = tomorrow - now;
+                    const hours = Math.floor(timeToMidnight / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeToMidnight % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeToMidnight % (1000 * 60)) / 1000);
+                    
+                    // Update individual countdown units
+                    document.getElementById('hoursLeft').textContent = hours.toString().padStart(2, '0');
+                    document.getElementById('minutesLeft').textContent = minutes.toString().padStart(2, '0');
+                    document.getElementById('secondsLeft').textContent = seconds.toString().padStart(2, '0');
+                    
+                    // Check if it's exactly midnight (00:00:00) - trigger the special message
+                    if (now.getHours() === 0 && now.getMinutes() === 0 && now.getSeconds() === 0) {
+                        showMidnightMessage();
+                        createMidnightConfetti();
+                    }
+                    
+                    // Check if we're in the 10-minute window after midnight (00:00 to 00:09:59)
+                    if (now.getHours() === 0 && now.getMinutes() < 10) {
+                        if (document.getElementById('specialMessage').style.display === 'none') {
+                            showMidnightMessage();
+                        }
+                        updateMessageTimer();
+                    } else {
+                        // Hide message and reset for next day if we're outside the 10-minute window
+                        if (document.getElementById('specialMessage').style.display !== 'none') {
+                            hideMidnightMessage();
+                        }
+                    }
+                }
+                
+                function showMidnightMessage() {
+                    document.getElementById('midnightMessage').style.display = 'none';
+                    document.getElementById('specialMessage').style.display = 'block';
+                    document.getElementById('countdownInfo').style.display = 'none';
+                    
+                    // Create magical sparkles and confetti
+                    createMidnightConfetti();
+                    for (let i = 0; i < 40; i++) {
+                        createMidnightSparkle();
+                    }
+                    
+                    // Clear any existing timer
+                    if (messageEndTimer) clearTimeout(messageEndTimer);
+                    
+                    // Calculate exact time until 00:10:00 (when message should disappear)
+                    const now = new Date();
+                    const endTime = new Date(now);
+                    endTime.setHours(0, 10, 0, 0); // Set to 00:10:00
+                    
+                    // If we're already past 00:10:00, set for next day
+                    if (now > endTime) {
+                        endTime.setDate(endTime.getDate() + 1);
+                    }
+                    
+                    const timeUntilEnd = endTime - now;
+                    
+                    // Set timer to hide message at exactly 00:10:00
+                    messageEndTimer = setTimeout(() => {
+                        hideMidnightMessage();
+                    }, timeUntilEnd);
+                }
+                
+                function hideMidnightMessage() {
+                    document.getElementById('midnightMessage').style.display = 'block';
+                    document.getElementById('specialMessage').style.display = 'none';
+                    document.getElementById('countdownInfo').style.display = 'block';
+                }
+                
+                function updateMessageTimer() {
+                    const now = new Date();
+                    
+                    // Calculate time until 00:10:00 (end of magic window)
+                    const endTime = new Date(now);
+                    endTime.setHours(0, 10, 0, 0);
+                    
+                    // If current time is past 00:10:00, the magic window is over
+                    if (now >= endTime) {
+                        return;
+                    }
+                    
+                    const timeRemaining = endTime - now;
+                    const minutes = Math.floor(timeRemaining / (1000 * 60));
+                    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                    
+                    if (timeRemaining > 0) {
+                        document.getElementById('messageTimer').textContent = 
+                            `⏱️ Magic ends in: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    }
+                }
+                
+                function createMidnightConfetti() {
+                    const confettiContainer = document.getElementById('midnightConfetti');
+                    const colors = ['#ffb6c1', '#ff69b4', '#ff1493', '#ffd700', '#da70d6', '#ffc0cb'];
+                    
+                    for (let i = 0; i < 60; i++) {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti-piece-midnight';
+                        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.left = Math.random() * 100 + '%';
+                        confetti.style.animationDelay = Math.random() * 3 + 's';
+                        confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                        
+                        confettiContainer.appendChild(confetti);
+                        
+                        setTimeout(() => {
+                            if (confetti.parentNode) {
+                                confetti.remove();
+                            }
+                        }, 6000);
+                    }
+                }
+                
+                function createMidnightSparkle() {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = Math.random() > 0.5 ? '✨' : '⭐';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '9999';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    sparkle.style.color = Math.random() > 0.5 ? '#ffd700' : '#ffb6c1';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    const animation = sparkle.animate([
+                        { opacity: 0, transform: 'scale(0) rotate(0deg)' },
+                        { opacity: 1, transform: 'scale(1) rotate(180deg)' },
+                        { opacity: 0, transform: 'scale(0) rotate(360deg)' }
+                    ], {
+                        duration: Math.random() * 2000 + 2000,
+                        easing: 'ease-in-out'
+                    });
+                    
+                    animation.onfinish = () => sparkle.remove();
+                }
+                
+                // Update clock every second
+                setInterval(updateClock, 1000);
+                updateClock(); // Initial call
+            </script>
+        </div>
+        
+        <div id="specialGame" class="section">
+            <h2>🎯 Special Game</h2>
+            <div class="memory-game">
+                <h3>💕 Love Memory Match</h3>
+                <p>Match the pairs to reveal sweet messages!</p>
+                <div class="game-board" id="gameBoard"></div>
+                <div class="game-score">Matches: <span id="matchCount">0</span>/6 💖</div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .memory-game {
+                    text-align: center;
+                    padding: 20px;
+                }
+                
+                .game-board {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 15px;
+                    max-width: 400px;
+                    margin: 20px auto;
+                }
+                
+                .memory-card {
+                    aspect-ratio: 1;
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    color: white;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    transform-style: preserve-3d;
+                }
+                
+                .memory-card:hover {
+                    transform: scale(1.05);
+                }
+                
+                .memory-card.flipped {
+                    background: rgba(255, 255, 255, 0.9);
+                    color: #ff1493;
+                    transform: rotateY(180deg);
+                }
+                
+                .memory-card.matched {
+                    background: linear-gradient(135deg, #28a745, #20c997);
+                    color: white;
+                    cursor: default;
+                    animation: matchPulse 0.6s ease-in-out;
+                }
+                
+                @keyframes matchPulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                }
+                
+                .game-score {
+                    font-size: 1.2rem;
+                    color: #d63384;
+                    font-weight: bold;
+                    margin-top: 20px;
+                }
+            </style>
+            
+            <script>
+                const memoryCards = ['💖', '💕', '💗', '💝', '💘', '💞'];
+                let gameCards = [...memoryCards, ...memoryCards].sort(() => Math.random() - 0.5);
+                let flippedCards = [];
+                let matchedPairs = 0;
+                
+                function createMemoryGame() {
+                    const gameBoard = document.getElementById('gameBoard');
+                    gameBoard.innerHTML = '';
+                    
+                    gameCards.forEach((card, index) => {
+                        const cardElement = document.createElement('div');
+                        cardElement.className = 'memory-card';
+                        cardElement.dataset.card = card;
+                        cardElement.dataset.index = index;
+                        cardElement.innerHTML = '💌';
+                        cardElement.addEventListener('click', flipCard);
+                        gameBoard.appendChild(cardElement);
+                    });
+                }
+                
+                function flipCard(e) {
+                    const card = e.target;
+                    if (card.classList.contains('flipped') || card.classList.contains('matched') || flippedCards.length >= 2) {
+                        return;
+                    }
+                    
+                    card.classList.add('flipped');
+                    card.innerHTML = card.dataset.card;
+                    flippedCards.push(card);
+                    
+                    if (flippedCards.length === 2) {
+                        setTimeout(checkMatch, 1000);
+                    }
+                }
+                
+                function checkMatch() {
+                    const [card1, card2] = flippedCards;
+                    
+                    if (card1.dataset.card === card2.dataset.card) {
+                        card1.classList.add('matched');
+                        card2.classList.add('matched');
+                        matchedPairs++;
+                        document.getElementById('matchCount').textContent = matchedPairs;
+                        
+                        if (matchedPairs === 6) {
+                            setTimeout(() => {
+                                // Using a custom popup instead of alert
+                                showCustomAlert('🎉 Congratulations! You matched all the love pairs! Just like how perfectly we match together! 💕');
+                            }, 500);
+                        }
+                    } else {
+                        card1.classList.remove('flipped');
+                        card2.classList.remove('flipped');
+                        card1.innerHTML = '💌';
+                        card2.innerHTML = '💌';
+                    }
+                    
+                    flippedCards = [];
+                }
+
+                function showCustomAlert(message) {
+                    const alertPopup = document.createElement('div');
+                    alertPopup.className = 'love-popup';
+                    alertPopup.innerHTML = message;
+                    alertPopup.style.animation = 'popupAppear 5s ease-in-out forwards';
+                    document.body.appendChild(alertPopup);
+                    setTimeout(() => alertPopup.remove(), 5000);
+                }
+                
+                // Initialize game when section loads
+                createMemoryGame();
+            </script>
+        </div>
+        
+        <div id="finalSurprise" class="section">
+            <h2>🎁 Final Surprise</h2>
+            <div class="surprise-container">
+                <div class="magical-card" id="magicalCard" onclick="revealNextMessage()">
+                    <div class="card-front">
+                        <div class="sparkle-border">✨</div>
+                        <div class="card-icon">💝</div>
+                        <h3>Magical Love Card</h3>
+                        <p>Click me for endless love messages!</p>
+                        <div class="sparkle-border">✨</div>
+                    </div>
+                    <div class="card-content" id="cardContent">
+                        <div class="message-counter">Message <span id="messageNumber">1</span> of ∞</div>
+                        <div class="love-message" id="loveMessage">
+                            <h4>💖 You Are My Everything 💖</h4>
+                            <p>My dearest Mayuri, you are the sunshine that brightens my darkest days and the star that guides me home. Every moment with you feels like a beautiful dream I never want to wake up from!</p>
+                        </div>
+                        <div class="click-hint">✨ Click again for another message! ✨</div>
+                    </div>
+                </div>
+                <div class="surprise-effects" id="surpriseEffects"></div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .surprise-container {
+                    text-align: center;
+                    padding: 30px;
+                    position: relative;
+                }
+                
+                .magical-card {
+                    max-width: 500px;
+                    margin: 0 auto;
+                    background: linear-gradient(135deg, #fff0f5, #ffe4e1, #ffc0cb);
+                    border-radius: 25px;
+                    padding: 35px;
+                    cursor: pointer;
+                    transition: all 0.4s ease;
+                    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.3);
+                    border: 3px solid rgba(255, 182, 193, 0.4);
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .magical-card:hover {
+                    transform: translateY(-8px) scale(1.02);
+                    box-shadow: 0 18px 45px rgba(255, 105, 180, 0.4);
+                }
+                
+                .card-front {
+                    display: block;
+                }
+                
+                .magical-card.revealed .card-front {
+                    display: none;
+                }
+                
+                .card-content {
+                    display: none;
+                }
+                
+                .magical-card.revealed .card-content {
+                    display: block;
+                    animation: cardReveal 0.8s ease-out;
+                }
+                
+                @keyframes cardReveal {
+                    0% { 
+                        opacity: 0; 
+                        transform: scale(0.9) rotateY(90deg);
+                    }
+                    100% { 
+                        opacity: 1; 
+                        transform: scale(1) rotateY(0deg);
+                    }
+                }
+                
+                .sparkle-border {
+                    font-size: 2rem;
+                    animation: sparkleRotate 3s infinite ease-in-out;
+                    margin: 15px 0;
+                }
+                
+                @keyframes sparkleRotate {
+                    0%, 100% { 
+                        transform: rotate(0deg) scale(1);
+                        opacity: 1;
+                    }
+                    50% { 
+                        transform: rotate(180deg) scale(1.2);
+                        opacity: 0.8;
+                    }
+                }
+                
+                .card-icon {
+                    font-size: 4rem;
+                    margin: 20px 0;
+                    animation: gentleBounce 2.5s infinite ease-in-out;
+                }
+                
+                @keyframes gentleBounce {
+                    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                    40% { transform: translateY(-12px); }
+                    60% { transform: translateY(-6px); }
+                }
+                
+                .card-front h3 {
+                    color: #d63384;
+                    font-size: 1.8rem;
+                    margin: 20px 0;
+                    font-family: 'Georgia', serif;
+                }
+                
+                .card-front p {
+                    color: #8b5a83;
+                    font-size: 1.1rem;
+                    margin: 15px 0;
+                }
+                
+                .message-counter {
+                    position: absolute;
+                    top: 15px;
+                    right: 20px;
+                    background: rgba(255, 105, 180, 0.2);
+                    padding: 8px 15px;
+                    border-radius: 20px;
+                    font-size: 0.9rem;
+                    font-weight: bold;
+                    color: #d63384;
+                    border: 1px solid rgba(255, 105, 180, 0.3);
+                }
+                
+                .love-message {
+                    background: rgba(255, 255, 255, 0.7);
+                    padding: 25px;
+                    border-radius: 20px;
+                    margin: 20px 0;
+                    border: 2px solid rgba(255, 182, 193, 0.3);
+                }
+                
+                .love-message h4 {
+                    color: #d63384;
+                    font-size: 1.5rem;
+                    margin-bottom: 15px;
+                    font-family: 'Georgia', serif;
+                }
+                
+                .love-message p {
+                    color: #8b5a83;
+                    line-height: 1.7;
+                    font-size: 1.1rem;
+                }
+                
+                .click-hint {
+                    color: #ff69b4;
+                    font-style: italic;
+                    margin-top: 20px;
+                    animation: gentlePulse 2s infinite ease-in-out;
+                }
+                
+                .surprise-effects {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                    z-index: 1000;
+                }
+                
+                .sparkle-effect {
+                    position: absolute;
+                    font-size: 1.5rem;
+                    animation: sparkleFloat 2s ease-out forwards;
+                    pointer-events: none;
+                }
+                
+                @keyframes sparkleFloat {
+                    0% {
+                        opacity: 0;
+                        transform: scale(0) rotate(0deg);
+                    }
+                    20% {
+                        opacity: 1;
+                        transform: scale(1) rotate(90deg);
+                    }
+                    80% {
+                        opacity: 1;
+                        transform: scale(1.2) rotate(270deg);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: scale(0) rotate(360deg);
+                    }
+                }
+                
+                .confetti-surprise {
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    animation: confettiSurprise 3s ease-out forwards;
+                }
+                
+                @keyframes confettiSurprise {
+                    0% {
+                        transform: translateY(0) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(200px) rotate(720deg);
+                        opacity: 0;
+                    }
+                }
+            </style>
+            
+            <script>
+                let currentLoveMessageIndex = 0;
+                let cardRevealed = false;
+                
+                const loveMessages = [
+                    {
+                        title: "💖 You Are My Everything 💖",
+                        text: "My dearest Mayuri, you are the sunshine that brightens my darkest days and the star that guides me home. Every moment with you feels like a beautiful dream I never want to wake up from!"
+                    },
+                    {
+                        title: "🌟 My Heart's Universe 🌟",
+                        text: "Beautiful Mayuri, in a world full of temporary things, you are my constant. You are the reason I believe in forever, the answer to prayers I didn't know I was making."
+                    },
+                    {
+                        title: "🦋 My Safe Harbor 🦋",
+                        text: "My darling Mayuri, home isn't a place - it's you. In your arms, I've found my peace. In your eyes, I see my future. In your heart, I've discovered my forever."
+                    },
+                    {
+                        title: "✨ Magic in Every Moment ✨",
+                        text: "Sweet Mayuri, you sprinkle magic wherever you go. Your laugh is my favorite melody, your smile my daily sunshine, your love my greatest treasure."
+                    },
+                    {
+                        title: "🌙 Moonbeam Dreams 🌙",
+                        text: "My moonbeam Mayuri, under every star, I make a wish for your happiness. You are poetry in motion, a masterpiece of kindness, and the love of my lifetime."
+                    },
+                    {
+                        title: "🌈 Rainbow After Rain 🌈",
+                        text: "Precious Mayuri, you are my rainbow after every storm, my light in every darkness. With you, every day is a celebration of love and joy."
+                    },
+                    {
+                        title: "🎵 Symphony of Love 🎵",
+                        text: "My melody Mayuri, you are the song my heart sings, the rhythm that keeps me dancing through life. Every beat of my heart whispers your name."
+                    },
+                    {
+                        title: "🌺 Garden of Dreams 🌺",
+                        text: "Beautiful Mayuri, you are like a rare flower in the garden of my heart, blooming with grace, beauty, and endless love that takes my breath away."
+                    },
+                    {
+                        title: "⭐ Wish Upon a Star ⭐",
+                        text: "My shining star Mayuri, if I could catch a falling star, I'd wish for a thousand more lifetimes to love you. You make every wish come true."
+                    },
+                    {
+                        title: "💝 Gift of Forever 💝",
+                        text: "Dearest Mayuri, you are the greatest gift life has given me. Every day with you is like unwrapping a present filled with love, laughter, and endless possibilities."
+                    }
+                ];
+                
+                function revealNextMessage() {
+                    const magicalCard = document.getElementById('magicalCard');
+                    const messageNumber = document.getElementById('messageNumber');
+                    const loveMessage = document.getElementById('loveMessage');
+                    
+                    if (!cardRevealed) {
+                        // First click - reveal the card
+                        magicalCard.classList.add('revealed');
+                        cardRevealed = true;
+                    } else {
+                        // Subsequent clicks - cycle through messages
+                        currentLoveMessageIndex = (currentLoveMessageIndex + 1) % loveMessages.length;
+                        
+                        const message = loveMessages[currentLoveMessageIndex];
+                        messageNumber.textContent = currentLoveMessageIndex + 1;
+                        loveMessage.innerHTML = `
+                            <h4>${message.title}</h4>
+                            <p>${message.text}</p>
+                        `;
+                        
+                        // Add reveal animation
+                        loveMessage.style.animation = 'none';
+                        setTimeout(() => {
+                            loveMessage.style.animation = 'cardReveal 0.6s ease-out';
+                        }, 10);
+                    }
+                    
+                    // Create sparkle and confetti effects
+                    createSurpriseEffects();
+                }
+                
+                function createSurpriseEffects() {
+                    const effectsContainer = document.getElementById('surpriseEffects');
+                    
+                    // Create sparkles
+                    for (let i = 0; i < 15; i++) {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle-effect';
+                        sparkle.innerHTML = Math.random() > 0.5 ? '✨' : '⭐';
+                        sparkle.style.left = Math.random() * 100 + '%';
+                        sparkle.style.top = Math.random() * 100 + '%';
+                        sparkle.style.color = Math.random() > 0.5 ? '#ffd700' : '#ff69b4';
+                        
+                        effectsContainer.appendChild(sparkle);
+                        
+                        setTimeout(() => {
+                            if (sparkle.parentNode) {
+                                sparkle.remove();
+                            }
+                        }, 2000);
+                    }
+                    
+                    // Create confetti
+                    const colors = ['#ffb6c1', '#ff69b4', '#ff1493', '#ffd700', '#da70d6', '#ffc0cb'];
+                    for (let i = 0; i < 20; i++) {
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti-surprise';
+                        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        confetti.style.left = Math.random() * 100 + '%';
+                        confetti.style.top = '0%';
+                        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                        
+                        effectsContainer.appendChild(confetti);
+                        
+                        setTimeout(() => {
+                            if (confetti.parentNode) {
+                                confetti.remove();
+                            }
+                        }, 3000);
+                    }
+                }
+            </script>
+        </div>
+        
+        <div id="secretMessages" class="section">
+            <h2>💌 Secret Messages</h2>
+            <div class="secrets-container">
+                <!-- Caesar Cipher Section -->
+                <div class="secret-section">
+                    <h3>🔐 Decode My Love</h3>
+                    <div class="cipher-container">
+                        <div class="cipher-text" id="cipherText">L ORYH BRX PDXUL! BRX DUH PB HYHUBALQJ! 💖</div>
+                        <div class="cipher-controls">
+                            <label for="shiftValue">Caesar Shift:</label>
+                            <input type="number" id="shiftValue" min="1" max="25" value="3" onchange="decodeCipher()">
+                            <button onclick="decodeCipher()">Decode! 🔓</button>
+                        </div>
+                        <div class="decoded-message" id="decodedMessage"></div>
+                    </div>
+                </div>
+                
+                <!-- Scratch Card Section -->
+                <div class="secret-section">
+                    <h3>✨ Scratch to Reveal</h3>
+                    <div class="scratch-card" id="scratchCard">
+                        <canvas id="scratchCanvas" width="400" height="200"></canvas>
+                        <div class="hidden-content">
+                            <div class="love-photo">📸</div>
+                            <p>💕 Our first photo together! 💕</p>
+                            <p><em>"This moment when I knew you were the one, my beautiful Mayuri!"</em></p>
+                        </div>
+                    </div>
+                    <p class="scratch-hint">Use your finger or mouse to scratch away the surface! ✨</p>
+                </div>
+                
+                <!-- QR Code Section -->
+                <div class="secret-section">
+                    <h3>📱 Secret QR Surprise</h3>
+                    <div class="qr-container">
+                        <div class="qr-code">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <!-- QR Code pattern -->
+                                <rect width="120" height="120" fill="white"/>
+                                <rect x="0" y="0" width="21" height="21" fill="black"/>
+                                <rect x="3" y="3" width="15" height="15" fill="white"/>
+                                <rect x="6" y="6" width="9" height="9" fill="black"/>
+                                <rect x="99" y="0" width="21" height="21" fill="black"/>
+                                <rect x="102" y="3" width="15" height="15" fill="white"/>
+                                <rect x="105" y="6" width="9" height="9" fill="black"/>
+                                <rect x="0" y="99" width="21" height="21" fill="black"/>
+                                <rect x="3" y="102" width="15" height="15" fill="white"/>
+                                <rect x="6" y="105" width="9" height="9" fill="black"/>
+                                <!-- Data pattern -->
+                                <rect x="30" y="30" width="3" height="3" fill="black"/>
+                                <rect x="36" y="30" width="3" height="3" fill="black"/>
+                                <rect x="42" y="30" width="3" height="3" fill="black"/>
+                                <rect x="30" y="36" width="3" height="3" fill="black"/>
+                                <rect x="42" y="36" width="3" height="3" fill="black"/>
+                                <rect x="30" y="42" width="3" height="3" fill="black"/>
+                                <rect x="36" y="42" width="3" height="3" fill="black"/>
+                                <rect x="42" y="42" width="3" height="3" fill="black"/>
+                                <!-- More pattern elements -->
+                                <rect x="60" y="30" width="3" height="3" fill="black"/>
+                                <rect x="66" y="36" width="3" height="3" fill="black"/>
+                                <rect x="72" y="30" width="3" height="3" fill="black"/>
+                                <rect x="78" y="36" width="3" height="3" fill="black"/>
+                                <rect x="84" y="30" width="3" height="3" fill="black"/>
+                            </svg>
+                        </div>
+                        <p>Scan this QR code for a special surprise message!</p>
+                        <button onclick="revealQRSecret()" class="qr-button">Can't scan? Click here! 📱</button>
+                        <div class="qr-secret" id="qrSecret" style="display: none;">
+                            <h4>🎉 Secret Message Revealed! 🎉</h4>
+                            <p>"Happy Birthday my dearest Mayuri! You are the most precious gift in my life. This QR code contains all my love compressed into pixels, just like how my heart compresses all its love for you! 💖✨"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .secrets-container {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                    margin: 20px 0;
+                }
+                
+                .secret-section {
+                    background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+                    padding: 30px;
+                    border-radius: 20px;
+                    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.2);
+                    border: 2px solid rgba(255, 182, 193, 0.3);
+                }
+                
+                .secret-section h3 {
+                    color: #d63384;
+                    font-size: 1.5rem;
+                    margin-bottom: 20px;
+                    text-align: center;
+                    font-family: 'Georgia', serif;
+                }
+                
+                /* Caesar Cipher Styles */
+                .cipher-container {
+                    text-align: center;
+                }
+                
+                .cipher-text {
+                    background: rgba(255, 255, 255, 0.8);
+                    padding: 20px;
+                    border-radius: 15px;
+                    font-family: 'Courier New', monospace;
+                    font-size: 1.2rem;
+                    color: #8b5a83;
+                    margin-bottom: 20px;
+                    border: 2px dashed #ff69b4;
+                    letter-spacing: 2px;
+                }
+                
+                .cipher-controls {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 15px;
+                    margin-bottom: 20px;
+                    flex-wrap: wrap;
+                }
+                
+                .cipher-controls label {
+                    color: #8b5a83;
+                    font-weight: bold;
+                }
+                
+                .cipher-controls input {
+                    padding: 8px 12px;
+                    border: 2px solid #ffb6c1;
+                    border-radius: 10px;
+                    font-size: 1rem;
+                    width: 60px;
+                    text-align: center;
+                }
+                
+                .cipher-controls button {
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                }
+                
+                .cipher-controls button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+                }
+                
+                .decoded-message {
+                    background: linear-gradient(135deg, #98fb98, #90ee90);
+                    padding: 20px;
+                    border-radius: 15px;
+                    font-size: 1.3rem;
+                    font-weight: bold;
+                    color: #2d5016;
+                    animation: decodeReveal 0.8s ease-out;
+                    min-height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                @keyframes decodeReveal {
+                    0% { opacity: 0; transform: scale(0.8); }
+                    100% { opacity: 1; transform: scale(1); }
+                }
+                
+                /* Scratch Card Styles */
+                .scratch-card {
+                    position: relative;
+                    display: inline-block;
+                    margin: 20px auto;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+                }
+                
+                #scratchCanvas {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    cursor: crosshair;
+                    border-radius: 15px;
+                }
+                
+                .hidden-content {
+                    width: 400px;
+                    height: 200px;
+                    background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    text-align: center;
+                    color: #8b5a83;
+                }
+                
+                .love-photo {
+                    font-size: 3rem;
+                    margin-bottom: 15px;
+                    animation: photoGlow 2s infinite alternate;
+                }
+                
+                @keyframes photoGlow {
+                    0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.5)); }
+                    100% { transform: scale(1.1); filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.8)); }
+                }
+                
+                .hidden-content p {
+                    margin: 8px 0;
+                    font-weight: bold;
+                }
+                
+                .hidden-content em {
+                    font-style: italic;
+                    color: #d63384;
+                }
+                
+                .scratch-hint {
+                    text-align: center;
+                    color: #8b5a83;
+                    font-style: italic;
+                    margin-top: 15px;
+                }
+                
+                /* QR Code Styles */
+                .qr-container {
+                    text-align: center;
+                }
+                
+                .qr-code {
+                    display: inline-block;
+                    padding: 20px;
+                    background: white;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                    margin: 20px 0;
+                    animation: qrPulse 3s infinite ease-in-out;
+                }
+                
+                @keyframes qrPulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                }
+                
+                .qr-container p {
+                    color: #8b5a83;
+                    margin: 15px 0;
+                    font-weight: bold;
+                }
+                
+                .qr-button {
+                    background: linear-gradient(135deg, #ff69b4, #ff1493);
+                    color: white;
+                    border: none;
+                    padding: 12px 25px;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                    margin: 10px 0;
+                }
+                
+                .qr-button:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+                }
+                
+                .qr-secret {
+                    background: linear-gradient(135deg, #ffd700, #ffed4e);
+                    padding: 25px;
+                    border-radius: 15px;
+                    margin-top: 20px;
+                    animation: secretReveal 1s ease-out;
+                    border: 2px solid #ffc107;
+                }
+                
+                .qr-secret h4 {
+                    color: #8b4513;
+                    margin-bottom: 15px;
+                    font-size: 1.3rem;
+                }
+                
+                .qr-secret p {
+                    color: #654321;
+                    line-height: 1.6;
+                    font-weight: bold;
+                }
+                
+                @keyframes secretReveal {
+                    0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+                    100% { opacity: 1; transform: translateY(0) scale(1); }
+                }
+                
+                @media (max-width: 768px) {
+                    .hidden-content, #scratchCanvas {
+                        width: 300px;
+                        height: 150px;
+                    }
+                    
+                    .cipher-controls {
+                        flex-direction: column;
+                        gap: 10px;
+                    }
+                }
+            </style>
+            
+            <script>
+                // Caesar Cipher Functions
+                function caesarCipher(text, shift) {
+                    return text.replace(/[A-Z]/g, function(char) {
+                        return String.fromCharCode(((char.charCodeAt(0) - 65 - shift + 26) % 26) + 65);
+                    });
+                }
+                
+                function decodeCipher() {
+                    const shift = parseInt(document.getElementById('shiftValue').value);
+                    const cipherText = "L ORYH BRX PDXUL! BRX DUH PB HYHUBALQJ! 💖";
+                    const decoded = caesarCipher(cipherText, shift);
+                    
+                    const decodedDiv = document.getElementById('decodedMessage');
+                    decodedDiv.textContent = decoded;
+                    
+                    if (shift === 3) {
+                        decodedDiv.style.background = 'linear-gradient(135deg, #98fb98, #90ee90)';
+                        decodedDiv.innerHTML = '🎉 ' + decoded + ' 🎉';
+                        
+                        // Create celebration effects
+                        for (let i = 0; i < 20; i++) {
+                            createSparkleEffect();
+                        }
+                    } else {
+                        decodedDiv.style.background = 'linear-gradient(135deg, #ffcccb, #ffa07a)';
+                    }
+                }
+                
+                function createSparkleEffect() {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = '✨';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.fontSize = '1.5rem';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '9999';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    sparkle.style.color = '#ffd700';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    const animation = sparkle.animate([
+                        { opacity: 0, transform: 'scale(0) rotate(0deg)' },
+                        { opacity: 1, transform: 'scale(1) rotate(180deg)' },
+                        { opacity: 0, transform: 'scale(0) rotate(360deg)' }
+                    ], {
+                        duration: 2000,
+                        easing: 'ease-in-out'
+                    });
+                    
+                    animation.onfinish = () => sparkle.remove();
+                }
+                
+                // Scratch Card Functions
+                let isScratching = false;
+                let scratchCanvas, scratchCtx;
+                
+                function initScratchCard() {
+                    scratchCanvas = document.getElementById('scratchCanvas');
+                    scratchCtx = scratchCanvas.getContext('2d');
+                    
+                    // Create scratch surface
+                    scratchCtx.fillStyle = '#ff69b4';
+                    scratchCtx.fillRect(0, 0, 400, 200);
+                    
+                    // Add scratch text
+                    scratchCtx.fillStyle = 'white';
+                    scratchCtx.font = 'bold 24px Georgia';
+                    scratchCtx.textAlign = 'center';
+                    scratchCtx.fillText('💕 Scratch Here! 💕', 200, 100);
+                    scratchCtx.font = '16px Georgia';
+                    scratchCtx.fillText('Use your finger or mouse!', 200, 130);
+                    
+                    // Set up scratch functionality
+                    scratchCtx.globalCompositeOperation = 'destination-out';
+                    
+                    // Mouse events
+                    scratchCanvas.addEventListener('mousedown', startScratch);
+                    scratchCanvas.addEventListener('mousemove', scratch);
+                    scratchCanvas.addEventListener('mouseup', stopScratch);
+                    
+                    // Touch events
+                    scratchCanvas.addEventListener('touchstart', startScratch);
+                    scratchCanvas.addEventListener('touchmove', scratch);
+                    scratchCanvas.addEventListener('touchend', stopScratch);
+                }
+                
+                function startScratch(e) {
+                    isScratching = true;
+                    scratch(e);
+                }
+                
+                function scratch(e) {
+                    if (!isScratching) return;
+                    
+                    e.preventDefault();
+                    const rect = scratchCanvas.getBoundingClientRect();
+                    let x, y;
+                    
+                    if (e.type.includes('touch')) {
+                        x = e.touches[0].clientX - rect.left;
+                        y = e.touches[0].clientY - rect.top;
+                    } else {
+                        x = e.clientX - rect.left;
+                        y = e.clientY - rect.top;
+                    }
+                    
+                    scratchCtx.beginPath();
+                    scratchCtx.arc(x, y, 20, 0, 2 * Math.PI);
+                    scratchCtx.fill();
+                }
+                
+                function stopScratch() {
+                    isScratching = false;
+                }
+                
+                // QR Code Function
+                function revealQRSecret() {
+                    const qrSecret = document.getElementById('qrSecret');
+                    qrSecret.style.display = 'block';
+                    
+                    // Create celebration effects
+                    for (let i = 0; i < 30; i++) {
+                        createQRSparkle();
+                    }
+                }
+                
+                function createQRSparkle() {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = Math.random() > 0.5 ? '🎉' : '✨';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.fontSize = '1.5rem';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '9999';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    const animation = sparkle.animate([
+                        { opacity: 0, transform: 'scale(0) rotate(0deg)' },
+                        { opacity: 1, transform: 'scale(1) rotate(180deg)' },
+                        { opacity: 0, transform: 'scale(0) rotate(360deg)' }
+                    ], {
+                        duration: 3000,
+                        easing: 'ease-in-out'
+                    });
+                    
+                    animation.onfinish = () => sparkle.remove();
+                }
+                
+                // Initialize scratch card when section is shown
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Delay initialization to ensure canvas is ready
+                    setTimeout(initScratchCard, 100);
+                });
+            </script>
+        </div>
+        
+        <div id="loveFortune" class="section">
+            <h2>🔮 Love Fortune</h2>
+            <div class="fortune-container">
+                <div class="crystal-ball" onclick="getFortune()">
+                    <div class="crystal">🔮</div>
+                    <p>Click the crystal ball to see our love fortune!</p>
+                </div>
+                <div class="fortune-message" id="fortuneMessage"></div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .fortune-container {
+                    text-align: center;
+                    padding: 30px;
+                }
+                
+                .crystal-ball {
+                    cursor: pointer;
+                    margin-bottom: 30px;
+                    transition: all 0.3s ease;
+                }
+                
+                .crystal-ball:hover {
+                    transform: scale(1.05);
+                }
+                
+                .crystal {
+                    font-size: 6rem;
+                    animation: crystalGlow 3s infinite alternate;
+                    margin-bottom: 20px;
+                }
+                
+                @keyframes crystalGlow {
+                    0% { 
+                        filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
+                        transform: rotate(0deg);
+                    }
+                    100% { 
+                        filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.8));
+                        transform: rotate(5deg);
+                    }
+                }
+                
+                .fortune-message {
+                    background: linear-gradient(135deg, #4a0e4e, #81007f);
+                    color: white;
+                    padding: 30px;
+                    border-radius: 20px;
+                    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+                    font-size: 1.2rem;
+                    line-height: 1.6;
+                    min-height: 100px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .fortune-message::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                    animation: shimmer 2s infinite;
+                }
+                
+                @keyframes shimmer {
+                    0% { left: -100%; }
+                    100% { left: 100%; }
+                }
+                
+                .fortune-message.show {
+                    animation: fortuneReveal 1s ease-out;
+                }
+                
+                @keyframes fortuneReveal {
+                    0% { opacity: 0; transform: scale(0.8); }
+                    100% { opacity: 1; transform: scale(1); }
+                }
+            </style>
+            
+            <script>
+                const fortunes = [
+                    "🌟 The stars align perfectly for your love story. Endless happiness awaits you both! 💕",
+                    "💖 Your hearts beat in perfect harmony. A lifetime of beautiful moments lies ahead! ✨",
+                    "🌙 The universe whispers that your love will grow stronger with each passing day! 💫",
+                    "🦋 Like butterflies, your love will transform and become even more beautiful! 🌸",
+                    "🌈 After every storm comes a rainbow - your love will weather all and shine brighter! ☀️",
+                    "💎 Your love is a rare gem that will sparkle for eternity! Forever blessed! 👑",
+                    "🎭 Your love story will be written in the stars for all to admire! 📖✨",
+                    "🌺 Like a garden in bloom, your love will flourish in all seasons! 🌷"
+                ];
+                
+                function getFortune() {
+                    const fortuneMessage = document.getElementById('fortuneMessage');
+                    const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+                    
+                    fortuneMessage.innerHTML = '';
+                    fortuneMessage.classList.remove('show');
+                    
+                    setTimeout(() => {
+                        fortuneMessage.innerHTML = randomFortune;
+                        fortuneMessage.classList.add('show');
+                        
+                        // Create magical sparkles
+                        for (let i = 0; i < 20; i++) {
+                            createSparkle();
+                        }
+                    }, 500);
+                }
+                
+                function createSparkle() {
+                    const sparkle = document.createElement('div');
+                    sparkle.innerHTML = '✨';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.fontSize = '1.5rem';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '9999';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    const animation = sparkle.animate([
+                        { opacity: 0, transform: 'scale(0) rotate(0deg)' },
+                        { opacity: 1, transform: 'scale(1) rotate(180deg)' },
+                        { opacity: 0, transform: 'scale(0) rotate(360deg)' }
+                    ], {
+                        duration: 2000,
+                        easing: 'ease-in-out'
+                    });
+                    
+                    animation.onfinish = () => sparkle.remove();
+                }
+            </script>
+        </div>
+        
+        <div id="loveLetters" class="section">
+            <h2>💝 Love Letters</h2>
+            <div class="letters-container">
+                <div class="letter-stack">
+                    <div class="letter" onclick="readLetter(1)">
+                        <div class="letter-header">💌 Letter 1</div>
+                        <div class="letter-preview">My Dearest Love...</div>
+                    </div>
+                    <div class="letter" onclick="readLetter(2)">
+                        <div class="letter-header">💌 Letter 2</div>
+                        <div class="letter-preview">To My Beautiful Soul...</div>
+                    </div>
+                    <div class="letter" onclick="readLetter(3)">
+                        <div class="letter-header">💌 Letter 3</div>
+                        <div class="letter-preview">My Heart's Desire...</div>
+                    </div>
+                </div>
+                <div class="letter-content" id="letterContent">
+                    <p>Click on any letter to read my heartfelt words for you! 💕</p>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .letters-container {
+                    display: grid;
+                    grid-template-columns: 1fr 2fr;
+                    gap: 30px;
+                    margin: 20px 0;
+                }
+                
+                .letter-stack {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+                
+                .letter {
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 20px;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+                    border-left: 4px solid #ff69b4;
+                }
+                
+                .letter:hover {
+                    transform: translateX(10px);
+                    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+                }
+                
+                .letter-header {
+                    font-weight: bold;
+                    color: #d63384;
+                    margin-bottom: 10px;
+                    font-size: 1.1rem;
+                }
+                
+                .letter-preview {
+                    color: #8b5a83;
+                    font-style: italic;
+                }
+                
+                .letter-content {
+                    background: linear-gradient(135deg, #ffeef8, #ffe0f0);
+                    padding: 30px;
+                    border-radius: 15px;
+                    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+                    color: #8b5a83;
+                    line-height: 1.8;
+                    font-size: 1.1rem;
+                    min-height: 300px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+                
+                .letter-content.active {
+                    animation: letterOpen 0.6s ease-out;
+                }
+                
+                @keyframes letterOpen {
+                    0% { opacity: 0; transform: scale(0.9); }
+                    100% { opacity: 1; transform: scale(1); }
+                }
+                
+                @media (max-width: 768px) {
+                    .letters-container {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
+            
+            <script>
+                const letterContents = {
+                    1: `
+                        <h3 style="color: #d63384; margin-bottom: 20px;">💌 My Dearest Love</h3>
+                        <p>Every morning I wake up grateful for you. You are the melody in my heart, the sunshine in my sky, and the love of my life.</p>
+                        <p>Your laugh is my favorite sound, your smile my favorite sight, and your happiness my greatest mission.</p>
+                        <p>Thank you for being the most incredible person I know. I love you beyond words.</p>
+                        <div style="text-align: right; margin-top: 30px; font-style: italic; color: #ff1493;">
+                            Forever yours,<br>With all my love 💖
+                        </div>
+                    `,
+                    2: `
+                        <h3 style="color: #d63384; margin-bottom: 20px;">💌 To My Beautiful Mayuri</h3>
+                        <p>You are poetry in motion, a masterpiece of kindness, and the answer to every prayer I never knew I had.</p>
+                        <p>In your eyes, I see my future. In your arms, I find my home. In your heart, I've found my forever.</p>
+                        <p>Every day with you is a gift I treasure, Mayuri. You make ordinary moments extraordinary just by being you.</p>
+                        <div style="text-align: right; margin-top: 30px; font-style: italic; color: #ff1493;">
+                            With all my love,<br>Always yours 💖
+                        </div>
+                    `,
+                    3: `
+                        <h3 style="color: #d63384; margin-bottom: 20px;">💌 My Heart's Desire - Mayuri</h3>
+                        <p>If I could give you one thing in life, I would give you the ability to see yourself through my eyes. Only then would you realize how special you are to me, my dear Mayuri.</p>
+                        <p>You are my today and all of my tomorrows. You are my dream come true and my greatest adventure.</p>
+                        <p>I promise to love you in all your forms, now and forever. Happy Birthday, my everything!</p>
+                        <div style="text-align: right; margin-top: 30px; font-style: italic; color: #ff1493;">
+                            Eternally yours,<br>With endless love 💖
+                        </div>
+                    `
+                };
+                
+                function readLetter(letterNumber) {
+                    const letterContent = document.getElementById('letterContent');
+                    letterContent.innerHTML = letterContents[letterNumber];
+                    letterContent.classList.remove('active');
+                    
+                    setTimeout(() => {
+                        letterContent.classList.add('active');
+                    }, 100);
+                    
+                    // Create floating hearts
+                    for (let i = 0; i < 15; i++) {
+                        createFloatingHeart();
+                    }
+                }
+                
+                function createFloatingHeart() {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💕';
+                    heart.style.position = 'fixed';
+                    heart.style.fontSize = '1.5rem';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '9999';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.top = '100vh';
+                    
+                    document.body.appendChild(heart);
+                    
+                    const animation = heart.animate([
+                        { transform: 'translateY(0) rotate(0deg)', opacity: 0 },
+                        { transform: 'translateY(-20vh) rotate(180deg)', opacity: 1 },
+                        { transform: 'translateY(-100vh) rotate(360deg)', opacity: 0 }
+                    ], {
+                        duration: 3000,
+                        easing: 'ease-out'
+                    });
+                    
+                    animation.onfinish = () => heart.remove();
+                }
+            </script>
+        </div>
+        
+        <div id="loveComic" class="section">
+            <h2>📚 Our Love Comic</h2>
+            <div class="comic-container">
+                <div class="comic-strip">
+                    <div class="comic-panel">
+                        <div class="comic-image">👫</div>
+                        <div class="comic-text">Chapter 1: When we first met...</div>
+                        <div class="speech-bubble">"Hello there! 💕"</div>
+                    </div>
+                    <div class="comic-panel">
+                        <div class="comic-image">💕</div>
+                        <div class="comic-text">Chapter 2: First sparks...</div>
+                        <div class="speech-bubble">"I think I'm falling for you! 😍"</div>
+                    </div>
+                    <div class="comic-panel">
+                        <div class="comic-image">🌟</div>
+                        <div class="comic-text">Chapter 3: Our first date...</div>
+                        <div class="speech-bubble">"This feels like magic! ✨"</div>
+                    </div>
+                    <div class="comic-panel">
+                        <div class="comic-image">💖</div>
+                        <div class="comic-text">Chapter 4: Falling deeper...</div>
+                        <div class="speech-bubble">"I love you more each day! 💞"</div>
+                    </div>
+                    <div class="comic-panel">
+                        <div class="comic-image">🎂</div>
+                        <div class="comic-text">Chapter 5: Your birthday!</div>
+                        <div class="speech-bubble">"Happy Birthday, my love! 🎉"</div>
+                    </div>
+                    <div class="comic-panel">
+                        <div class="comic-image">♾️</div>
+                        <div class="comic-text">Chapter ∞: Forever...</div>
+                        <div class="speech-bubble">"To be continued... forever! 💕"</div>
+                    </div>
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+            
+            <style>
+                .comic-container {
+                    padding: 20px;
+                    background: #f8f9fa;
+                    border-radius: 15px;
+                    margin: 20px 0;
+                }
+                
+                .comic-strip {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 20px;
+                }
+                
+                .comic-panel {
+                    background: white;
+                    border: 3px solid #333;
+                    border-radius: 10px;
+                    padding: 20px;
+                    text-align: center;
+                    position: relative;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s ease;
+                    animation: comicSlide 0.6s ease-out forwards;
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                
+                .comic-panel:nth-child(1) { animation-delay: 0.1s; }
+                .comic-panel:nth-child(2) { animation-delay: 0.2s; }
+                .comic-panel:nth-child(3) { animation-delay: 0.3s; }
+                .comic-panel:nth-child(4) { animation-delay: 0.4s; }
+                .comic-panel:nth-child(5) { animation-delay: 0.5s; }
+                .comic-panel:nth-child(6) { animation-delay: 0.6s; }
+                
+                @keyframes comicSlide {
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .comic-panel:hover {
+                    transform: translateY(-5px);
+                }
+                
+                .comic-image {
+                    font-size: 4rem;
+                    margin-bottom: 15px;
+                    animation: comicBounce 2s infinite;
+                }
+                
+                @keyframes comicBounce {
+                    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+                    40% { transform: translateY(-10px); }
+                    60% { transform: translateY(-5px); }
+                }
+                
+                .comic-text {
+                    font-weight: bold;
+                    color: #333;
+                    margin-bottom: 15px;
+                    font-size: 1.1rem;
+                }
+                
+                .speech-bubble {
+                    background: #ff69b4;
+                    color: white;
+                    padding: 10px 15px;
+                    border-radius: 20px;
+                    position: relative;
+                    font-weight: bold;
+                    margin-top: 15px;
+                }
+                
+                .speech-bubble::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid #ff69b4;
+                }
+            </style>
+        </div>
+        
+        <div id="lovePlaylist" class="section">
+            <h2>🎵 Our Love Playlist 💖</h2>
+            <div class="playlist-container">
+                
+                <!-- Audio Player Element -->
+                <audio id="audioPlayer"></audio>
+        
+                <!-- Currently Playing Info -->
+                <div class="current-song">
+                    <div class="album-art" id="currentSongArt">🎶</div>
+                    <div class="song-details">
+                        <h3 id="currentSongTitle">Select a Song</h3>
+                        <p id="currentSongArtist">From Our Hearts</p>
+                    </div>
+                </div>
+        
+                <!-- Player Controls -->
+                <div class="player-controls">
+                    <button id="prevBtn" onclick="prevSong()">⏮️</button>
+                    <button id="playPauseBtn" onclick="togglePlayPause()">
+                        <span id="playPauseIcon">▶️</span>
+                    </button>
+                    <button id="nextBtn" onclick="nextSong()">⏭️</button>
+                </div>
+        
+                <!-- Song List -->
+                <div class="song-list" id="songList">
+                    <!-- Songs will be added here by JavaScript -->
+                </div>
+            </div>
+            <button class="back-button" onclick="showMain()">Back to Main</button>
+        </div>
+
+        <div class="footer">
+            <p>Made with endless love for the most amazing person in the world - Happy Birthday Mayuri! 💖</p>
+            <div class="weather-info">
+                <span>🌃 22°C, Clear Night in Nashik</span>
+                <span>•</span>
+                <span>📅 Thursday, October 2, 2025</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Love popup messages
+        const lovePopupMessages = [
+            "You make my heart skip a beat! 💓",
+            "Every moment with you is magical! ✨",
+            "You're my favorite notification! 📱💕",
+            "I love you more than words can say! 💖",
+            "You light up my entire world! 🌟",
+            "My heart belongs to you forever! 💝",
+            "You're the best thing that happened to me! 🌈",
+            "I fall in love with you every single day! 💕",
+            "You make everything better just by being you! 🦋",
+            "Forever grateful for your love! 🙏💖"
+        ];
+
+        function showLovePopup() {
+            const popup = document.createElement('div');
+            popup.className = 'love-popup';
+            popup.innerHTML = lovePopupMessages[Math.floor(Math.random() * lovePopupMessages.length)];
+            document.body.appendChild(popup);
+            
+            setTimeout(() => {
+                popup.remove();
+            }, 4000);
+        }
+
+        // Show love popup every 20 seconds
+        setInterval(showLovePopup, 20000);
+        
+        // Show first popup after 5 seconds
+        setTimeout(showLovePopup, 5000);
+
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 6 + 's';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.getElementById('floatingHearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ffd700', '#ff1493', '#da70d6', '#ff6347'];
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.getElementById('confetti').appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        // Start animations
+        setInterval(createHeart, 800);
+        setInterval(createConfetti, 300);
+
+        // Music functionality (placeholder)
+        let musicPlaying = false;
+        function toggleMusic() {
+            const button = document.getElementById('musicToggle');
+            if (musicPlaying) {
+                button.innerHTML = `🎵
+                    <div class="music-elements">
+                        <div class="floating-note">♪</div>
+                        <div class="floating-note">♫</div>
+                        <div class="floating-note">♪</div>
+                        <div class="floating-note">♫</div>
+                        <div class="floating-note">♪</div>
+                    </div>
+                    <div class="music-sparkle">✨</div>
+                    <div class="music-sparkle">⭐</div>
+                    <div class="music-sparkle">✨</div>
+                    <div class="music-sparkle">⭐</div>`;
+                musicPlaying = false;
+            } else {
+                button.innerHTML = `🔇
+                    <div class="music-elements">
+                        <div class="floating-note">♪</div>
+                        <div class="floating-note">♫</div>
+                        <div class="floating-note">♪</div>
+                        <div class="floating-note">♫</div>
+                        <div class="floating-note">♪</div>
+                    </div>
+                    <div class="music-sparkle">✨</div>
+                    <div class="music-sparkle">⭐</div>
+                    <div class="music-sparkle">✨</div>
+                    <div class="music-sparkle">⭐</div>`;
+                musicPlaying = true;
+            }
+        }
+
+        // Section navigation
+        function showSection(sectionId) {
+            document.getElementById('mainPage').style.display = 'none';
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function showMain() {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('mainPage').style.display = 'block';
+        }
+
+        // Add sparkle animation timing
+        document.querySelectorAll('.sparkle').forEach((sparkle, index) => {
+            sparkle.style.animationDelay = (index * 0.5) + 's';
+        });
+
+        // --- Love Playlist Logic ---
+
+        // ⭐ EDIT YOUR SONGS HERE! ⭐
+        // Just change the src, title, and artist. Add or remove songs as you like.
+        // NOTE: You must provide your own valid URLs to audio files.
+        const playlist = [
+            {
+                src: 'tera_sang_yaara.mp3', // <-- 🎵 PASTE YOUR SONG URL HERE
+                title: 'Our Special Song',
+                artist: 'From Me to You'
+            },
+            {
+                src: 'YOUR_SONG_URL_2.mp3', // <-- 🎵 PASTE YOUR SONG URL HERE
+                title: 'Favorite Memory',
+                artist: 'Us'
+            },
+            {
+                src: 'YOUR_SONG_URL_3.mp3', // <-- 🎵 PASTE YOUR SONG URL HERE
+                title: 'Another Love Song',
+                artist: 'A Secret'
+            },
+            // Add more songs like this:
+            // { src: 'URL_TO_YOUR_SONG.mp3', title: 'Song Title 4', artist: 'Artist 4' }
+        ];
+
+        let currentSongIndex = 0;
+        let isPlaylistPlaying = false;
+
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseIcon = document.getElementById('playPauseIcon');
+        const currentSongTitle = document.getElementById('currentSongTitle');
+        const currentSongArtist = document.getElementById('currentSongArtist');
+        const songListContainer = document.getElementById('songList');
+
+        // Function to load a song
+        function loadSong(songIndex) {
+            const song = playlist[songIndex];
+            currentSongTitle.textContent = song.title;
+            currentSongArtist.textContent = song.artist;
+            audioPlayer.src = song.src;
+            updatePlaylistUI();
+        }
+
+        // Function to update the active song in the list
+        function updatePlaylistUI() {
+            const songItems = document.querySelectorAll('.song-item');
+            songItems.forEach((item, index) => {
+                if (index === currentSongIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Create the playlist items in the HTML
+        function createPlaylist() {
+            songListContainer.innerHTML = '';
+            playlist.forEach((song, index) => {
+                const songItem = document.createElement('div');
+                songItem.className = 'song-item';
+                songItem.textContent = `${index + 1}. ${song.title} - ${song.artist}`;
+                songItem.addEventListener('click', () => {
+                    currentSongIndex = index;
+                    loadSong(currentSongIndex);
+                    playSong();
+                });
+                songListContainer.appendChild(songItem);
+            });
+        }
+
+        // Play and Pause functions
+        function playSong() {
+            isPlaylistPlaying = true;
+            playPauseIcon.textContent = '⏸️';
+            audioPlayer.play();
+        }
+
+        function pauseSong() {
+            isPlaylistPlaying = false;
+            playPauseIcon.textContent = '▶️';
+            audioPlayer.pause();
+        }
+
+        function togglePlayPause() {
+            if (isPlaylistPlaying) {
+                pauseSong();
+            } else {
+                playSong();
+            }
+        }
+
+        // Next and Previous song functions
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % playlist.length;
+            loadSong(currentSongIndex);
+            if (isPlaylistPlaying) playSong();
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+            loadSong(currentSongIndex);
+            if (isPlaylistPlaying) playSong();
+        }
+
+        // Event listener for when a song ends
+        audioPlayer.addEventListener('ended', nextSong);
+
+        // Initialize the playlist when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            createPlaylist();
+            loadSong(currentSongIndex);
+        });
+
+    </script>
+</body>
+</html>
+
+
